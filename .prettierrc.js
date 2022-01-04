@@ -4,4 +4,12 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
+  useTabs: false,
+  tabWidth: 4,
+  singleQuote: true,
+  printWidth: 120,
+  trailingComma: 'all',
+  endOfLine: 'auto',
+  jsxBracketSameLine: true,
+  semi: true,
 };
