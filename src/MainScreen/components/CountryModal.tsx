@@ -20,6 +20,8 @@ const modalWidth = Width * 0.8;
 const modalHeight = Height * 0.8;
 const marginWidth = (Width - modalWidth) / 2;
 const marginHeight = (Height - modalHeight) / 2;
+const paddingHorizontal = 20;
+const sideWidth = 30;
 
 const CountryModal: React.FC<IProps> = ({
     isCountryModalOpen,
@@ -52,24 +54,37 @@ const CountryModal: React.FC<IProps> = ({
                                     style={{
                                         ...fonts.LargeLight,
                                         ...styles.modalText,
+                                        width: sideWidth,
                                     }}>
                                     {countries[`${country?.iso2}`].flag}
                                 </Text>
-                                <Text
-                                    style={{
-                                        ...fonts.MediumBold,
-                                        ...styles.modalText,
-                                    }}>
-                                    {countries[`${country?.iso2}`].name}
-                                </Text>
+                                <View style={styles.countryName}>
+                                    <Text
+                                        style={{
+                                            ...fonts.MediumBold,
+                                            ...styles.modalText,
+                                        }}>
+                                        {countries[`${country?.iso2}`].korName}
+                                    </Text>
+                                    <Text
+                                        style={{
+                                            ...fonts.SmallLight,
+                                            ...styles.modalText,
+                                        }}>
+                                        {countries[`${country?.iso2}`].engName}
+                                    </Text>
+                                </View>
                                 <Text
                                     style={{
                                         ...fonts.MediumLight,
                                         ...styles.modalText,
+                                        width: sideWidth,
                                     }}>
                                     {country?.currency}
                                 </Text>
-                                {selectedCurrency === country.currency && <Text>✔️</Text>}
+                                <Text style={{width: sideWidth}}>
+                                    {selectedCurrency === country.currency ? '✔️' : ''}
+                                </Text>
                             </TouchableOpacity>
                         ),
                 )}
@@ -88,22 +103,27 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         position: 'absolute',
-        maxWidth: modalWidth,
-        maxHeight: modalHeight,
+        width: modalWidth,
+        height: modalHeight,
         marginHorizontal: marginWidth,
         marginVertical: marginHeight,
         backgroundColor: colors.white,
-        paddingHorizontal: 20,
+        paddingHorizontal: paddingHorizontal,
         borderRadius: 20,
     },
+    countryName: {
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        width: modalWidth - paddingHorizontal - sideWidth * 3,
+    },
     row: {
-        zIndex: 10,
+        height: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     modalText: {
-        fontSize: 12,
+        textAlign: 'left',
     },
 });
 
