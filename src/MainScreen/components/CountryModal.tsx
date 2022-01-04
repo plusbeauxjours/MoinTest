@@ -40,6 +40,9 @@ const CountryModal: React.FC<IProps> = ({
             visible={isCountryModalOpen}
             onRequestClose={closeCountryModalOpen}>
             <TouchableOpacity style={styles.modalBackground} onPress={closeCountryModalOpen} activeOpacity={1} />
+            <TouchableOpacity onPress={closeCountryModalOpen} style={styles.closeIcon} activeOpacity={1}>
+                <Text style={{fontSize: 15, color: colors.grey}}>✕</Text>
+            </TouchableOpacity>
             <ScrollView
                 keyboardShouldPersistTaps={'handled'}
                 keyboardDismissMode="on-drag"
@@ -55,7 +58,12 @@ const CountryModal: React.FC<IProps> = ({
                     style={styles.input}
                 />
                 {countries
-                    .filter(country => country.korName.includes(search) || country.engName.includes(search))
+                    .filter(
+                        country =>
+                            country.korName.toLowerCase().includes(search.toLowerCase()) ||
+                            country.engName.toLowerCase().includes(search.toLowerCase()) ||
+                            country.currency.toLowerCase().includes(search.toLowerCase()),
+                    )
                     ?.map((country, index) => (
                         <TouchableOpacity
                             key={index}
@@ -122,6 +130,22 @@ const styles = StyleSheet.create({
         paddingHorizontal: paddingHorizontal,
         borderRadius: 20,
     },
+    closeIcon: {
+        zIndex: 3,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        right: marginWidth - 10,
+        top: marginHeight - 10,
+        width: 30,
+        height: 30,
+        borderRadius: 20,
+        backgroundColor: colors.white,
+        borderColor: colors.modalBackground,
+        borderWidth: 3,
+        paddingTop: 1,
+        paddingLeft: 1,
+    },
     countryName: {
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -136,9 +160,11 @@ const styles = StyleSheet.create({
     input: {
         marginVertical: 10,
         height: 35,
+        borderBottomWidth: 0.7,
+        borderBottomColor: colors.grey,
     },
     modalText: {
-        textAlign: 'left',
+        textAlign: 'center',
     },
 });
 
