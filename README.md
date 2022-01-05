@@ -14,3 +14,10 @@
 > > 4.  Country data 가공 (241개)
 > > 5.  한글과 영어로 country search
 > > 6.  Modal style
+
+> **2일차**
+>
+> > 1.  React Navigation Library 설치 가능여부 확인 메일 송수신
+> > 2.  Confirm Screen Style
+> > 3.  스크린 구상, 레이아웃, 디자인
+> > 4.  송금액 복사 버튼

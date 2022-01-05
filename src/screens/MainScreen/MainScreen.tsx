@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
-import CurrencyModal from './components/CountryModal';
+import CountryModal from './components/CountryModal';
 
-import {CountryApi, CurrencyApi, ICountry} from '../api';
-import {colors} from '../colors';
-import {fonts} from '../fonts';
-import {AppRoute} from '../../App';
+import {CurrencyApi, ICountry} from '../../utils/api';
+import {colors} from '../../utils/colors';
+import {fonts} from '../../utils/fonts';
+import {AppRoute} from '../../../App';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export interface ISelectedCountry {
@@ -30,29 +30,29 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
         engName: 'Japan',
         korName: '일본',
     });
-    const [countryData, setCountryData] = useState<ICountry[]>(null);
+    const [currencyData, setCurrencyData] = useState<ICountry[]>(null);
 
+    const [amount, setAmount] = useState<number>(0);
     const [isCountryModalOpen, setIsCountryModalOpen] = useState<boolean>(true);
     const [isCouponModalOpen, setIsCouponModalOpen] = useState<boolean>(true);
 
-    const getCountryData = async () => {
-        const {
-            data: {data},
-        } = await CountryApi();
-        setCountryData(data);
+    const getCurrencyData = async (currency?: string) => {
+        const {data} = await CurrencyApi(currency ?? selectedCurrency.currency);
+        setCurrencyData(data[0]);
     };
 
-    const goToConfirm = () => navigation.replace(AppRoute.CONFIRM);
+    const goToConfirm = () => navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, amount});
     const closeCountryModalOpen = () => setIsCountryModalOpen(false);
     const closeCouponModalOpen = () => setIsCouponModalOpen(false);
 
-    const selectCountryFn = currency => {
+    const selectCountryFn = (currency: ISelectedCountry) => {
+        getCurrencyData(currency?.currency);
         setSelectedCurrency(currency);
         setIsCountryModalOpen(false);
     };
 
     useEffect(() => {
-        getCountryData();
+        getCurrencyData();
     }, []);
 
     return (
@@ -60,14 +60,14 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
                 <Text style={fonts.LargeBold}>MainScreen{selectedCurrency.korName}</Text>
-                <CurrencyModal
+                <CountryModal
                     isCountryModalOpen={isCountryModalOpen}
                     closeCountryModalOpen={closeCountryModalOpen}
-                    countryData={countryData}
+                    currencyData={currencyData}
                     selectedCurrency={selectedCurrency}
                     selectCountryFn={selectCountryFn}
                 />
-                <TouchableOpacity onPress={goToConfirm}>
+                <TouchableOpacity onPress={goToConfirm} disabled={!currencyData}>
                     <Text style={fonts.LargeBold}>GOTO CONFIRM</Text>
                 </TouchableOpacity>
             </View>

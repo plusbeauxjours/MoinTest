@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {TextInput, Modal, View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity} from 'react-native';
 
-import {colors} from '../../colors';
-import {fonts} from '../../fonts';
-import {ICountry} from '../../api';
-import {countries} from '../../countries';
+import {colors} from '../../../utils/colors';
+import {fonts} from '../../../utils/fonts';
+import {ICountry} from '../../../utils/api';
+import {countries} from '../../../utils/countries';
 import {ISelectedCountry} from '../MainScreen';
 
 interface IProps {
     isCountryModalOpen: boolean;
     closeCountryModalOpen: () => void;
-    countryData: ICountry[];
+    currencyData: ICountry[];
     selectedCurrency: ISelectedCountry;
     selectCountryFn: (country: ISelectedCountry) => void;
 }
@@ -27,7 +27,7 @@ const sideWidth = 30;
 const CountryModal: React.FC<IProps> = ({
     isCountryModalOpen,
     closeCountryModalOpen,
-    countryData,
+    currencyData,
     selectedCurrency,
     selectCountryFn,
 }) => {
