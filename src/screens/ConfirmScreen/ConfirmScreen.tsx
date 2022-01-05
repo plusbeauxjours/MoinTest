@@ -20,11 +20,11 @@ import Toast from '../../components/Toast';
 
 interface IProps {
     navigation?: StackNavigationProp<ParamListBase>;
-    route?: RouteProp<{params: {requestTime?: Date; currencyData?: ICurrency; amount: number}}, 'params'>;
+    route?: RouteProp<{params: {requestTime?: Date; currencyData?: ICurrency; krwAmount: number}}, 'params'>;
 }
 
 const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => {
-    const {requestTime: _requestTime = null, currencyData: _currencyData = null, amount = 0} = params;
+    const {requestTime: _requestTime = null, currencyData: _currencyData = null, krwAmount = 0} = params;
 
     const [isToastVisible, setIsToastVisible] = useState<boolean>(false);
     const [requestTime, setRequestTime] = useState<Date>(null);
@@ -100,7 +100,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 </View>
                 <Text style={{...fonts.Small, ...styles.smallText}}>수수료 :{}</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>환율 :{currencyData?.basePrice}</Text>
-                <Text style={{...fonts.Small, ...styles.smallText}}>송금액 :{amount}</Text>
+                <Text style={{...fonts.Small, ...styles.smallText}}>송금액 :{krwAmount}</Text>
             </View>
             {isToastVisible && <Toast text={'계좌정보를 복사하였습니다.'} />}
         </SafeAreaView>

@@ -1,14 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View} from 'react-native';
-import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    StatusBar,
+    SafeAreaView,
+    View,
+    NativeSyntheticEvent,
+    TextInputChangeEventData,
+} from 'react-native';
+import {ParamListBase} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
+import Input from './components/Input';
 import CountryModal from './components/CountryModal';
 
 import {CurrencyApi, ICountry} from '../../utils/api';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {AppRoute} from '../../../App';
-import {StackNavigationProp} from '@react-navigation/stack';
+import countries from '../../utils/countries';
 
 export interface ISelectedCountry {
     flag: string;
@@ -23,47 +34,75 @@ interface IProps {
 }
 
 const MainScreen: React.FC<IProps> = ({navigation}) => {
-    const [selectedCurrency, setSelectedCurrency] = useState<ISelectedCountry>({
-        flag: '🇯🇵',
-        code: 'JP',
-        currency: 'JPY',
-        engName: 'Japan',
-        korName: '일본',
-    });
+    const Korea = {flag: '🇰🇷', code: 'KR', currency: 'KRW', engName: 'South Korea', korName: '대한민국'};
+    const initCountry = {flag: '🇯🇵', code: 'JP', currency: 'JPY', engName: 'Japan', korName: '일본'};
+
     const [currencyData, setCurrencyData] = useState<ICountry[]>(null);
+    const [selectedCurrency, setSelectedCurrency] = useState<ISelectedCountry>(initCountry);
 
-    const [amount, setAmount] = useState<number>(0);
-    const [isCountryModalOpen, setIsCountryModalOpen] = useState<boolean>(true);
-    const [isCouponModalOpen, setIsCouponModalOpen] = useState<boolean>(true);
+    const [krwAmount, setKrwAmount] = useState<string>(null);
+    const [exchangeAmount, setExchangeAmount] = useState<string>(null);
 
-    const getCurrencyData = async (currency?: string) => {
-        const {data} = await CurrencyApi(currency ?? selectedCurrency.currency);
+    const [isCountryModalOpen, setIsCountryModalOpen] = useState<boolean>(false);
+    const [isCouponModalOpen, setIsCouponModalOpen] = useState<boolean>(false);
+
+    const getCurrencyData = async () => {
+        const {data} = await CurrencyApi(selectedCurrency.currency);
         setCurrencyData(data[0]);
     };
 
-    const goToConfirm = () => navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, amount});
-    const closeCountryModalOpen = () => setIsCountryModalOpen(false);
-    const closeCouponModalOpen = () => setIsCouponModalOpen(false);
+    const goToConfirm = (): void =>
+        navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, krwAmount});
+    const closeCountryModalOpen = (): void => setIsCountryModalOpen(false);
+    const closeCouponModalOpen = (): void => setIsCouponModalOpen(false);
 
-    const selectCountryFn = (currency: ISelectedCountry) => {
-        getCurrencyData(currency?.currency);
+    const selectCountryFn = (currency: ISelectedCountry): void => {
         setSelectedCurrency(currency);
         setIsCountryModalOpen(false);
     };
 
+    const onKrwAmountChange = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
+        const value = e.nativeEvent.text;
+        setKrwAmount(value);
+    };
+    const onExchangeAmountChange = (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
+        const value = e.nativeEvent.text;
+        setExchangeAmount(value);
+    };
+
+    useEffect(() => {
+        setSelectedCurrency(countries.find(i => i.currency === 'JPY'));
+    }, []);
+
     useEffect(() => {
         getCurrencyData();
-    }, []);
+    }, [selectedCurrency]);
+
+    const CurrencyComponent = ({country, disabled = false}: {country: ISelectedCountry; disabled?: boolean}) => (
+        <View style={styles.row}>
+            <TouchableOpacity
+                style={styles.row}
+                onPress={() => setIsCountryModalOpen(true)}
+                activeOpacity={0.8}
+                disabled={disabled}>
+                <Text>
+                    {country.flag}
+                    <Text style={fonts.Large}>{country.currency}</Text>
+                </Text>
+            </TouchableOpacity>
+            <Input onChange={onExchangeAmountChange} value={exchangeAmount} />
+        </View>
+    );
 
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
-                <Text style={fonts.LargeBold}>MainScreen{selectedCurrency.korName}</Text>
+                <CurrencyComponent country={Korea} disabled />
+                <CurrencyComponent country={selectedCurrency} />
                 <CountryModal
                     isCountryModalOpen={isCountryModalOpen}
                     closeCountryModalOpen={closeCountryModalOpen}
-                    currencyData={currencyData}
                     selectedCurrency={selectedCurrency}
                     selectCountryFn={selectCountryFn}
                 />
@@ -82,6 +121,11 @@ const styles = StyleSheet.create({
     },
     body: {
         paddingHorizontal: 20,
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
 });
 

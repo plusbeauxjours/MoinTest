@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+
 import {colors} from '../utils/colors';
 import {fonts} from '../utils/fonts';
 

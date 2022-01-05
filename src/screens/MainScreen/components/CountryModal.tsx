@@ -1,16 +1,14 @@
-import React, {useState} from 'react';
-import {TextInput, Modal, View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity} from 'react-native';
+import React, {useState, useCallback, useMemo} from 'react';
+import {TextInput, Modal, View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList} from 'react-native';
 
+import {ISelectedCountry} from '../MainScreen';
 import {colors} from '../../../utils/colors';
 import {fonts} from '../../../utils/fonts';
-import {ICountry} from '../../../utils/api';
 import {countries} from '../../../utils/countries';
-import {ISelectedCountry} from '../MainScreen';
 
 interface IProps {
     isCountryModalOpen: boolean;
     closeCountryModalOpen: () => void;
-    currencyData: ICountry[];
     selectedCurrency: ISelectedCountry;
     selectCountryFn: (country: ISelectedCountry) => void;
 }
@@ -27,87 +25,97 @@ const sideWidth = 30;
 const CountryModal: React.FC<IProps> = ({
     isCountryModalOpen,
     closeCountryModalOpen,
-    currencyData,
     selectedCurrency,
     selectCountryFn,
 }) => {
     const [search, setSearch] = useState<string>('');
+
+    const closeModalAndSearch = (): void => {
+        setSearch('');
+        closeCountryModalOpen();
+    };
+
+    const ListHeaderComponent = useMemo(
+        () => (
+            <TextInput
+                autoFocus
+                placeholder={'🔍'}
+                placeholderTextColor={colors.grey}
+                selectionColor={colors.secondary}
+                onChangeText={setSearch}
+                value={search}
+                style={styles.input}
+            />
+        ),
+        [search],
+    );
+
+    const renderItem = useCallback(
+        ({item}) => (
+            <TouchableOpacity onPress={() => selectCountryFn(item)} style={styles.row} activeOpacity={0.8}>
+                <Text
+                    style={{
+                        ...fonts.LargeLight,
+                        ...styles.modalText,
+                        width: sideWidth,
+                    }}>
+                    {item.flag}
+                </Text>
+                <View style={styles.countryName}>
+                    <Text
+                        style={{
+                            ...fonts.MediumBold,
+                            ...styles.modalText,
+                        }}>
+                        {item.korName}
+                    </Text>
+                    <Text
+                        style={{
+                            ...fonts.SmallLight,
+                            ...styles.modalText,
+                        }}>
+                        {item.engName}
+                    </Text>
+                </View>
+                <Text
+                    style={{
+                        ...fonts.MediumLight,
+                        ...styles.modalText,
+                        width: sideWidth,
+                    }}>
+                    {item?.currency}
+                </Text>
+                <Text style={{width: sideWidth}}>{selectedCurrency.code === item.code ? '✔️' : ''}</Text>
+            </TouchableOpacity>
+        ),
+        [selectedCurrency],
+    );
 
     return (
         <Modal
             animationType="fade"
             transparent={true}
             visible={isCountryModalOpen}
-            onRequestClose={closeCountryModalOpen}>
-            <TouchableOpacity style={styles.modalBackground} onPress={closeCountryModalOpen} activeOpacity={1} />
-            <TouchableOpacity onPress={closeCountryModalOpen} style={styles.closeIcon} activeOpacity={1}>
+            onRequestClose={closeModalAndSearch}>
+            <TouchableOpacity style={styles.modalBackground} onPress={closeModalAndSearch} activeOpacity={1} />
+            <TouchableOpacity onPress={closeModalAndSearch} style={styles.closeIcon} activeOpacity={1}>
                 <Text style={{fontSize: 15, color: colors.grey}}>✕</Text>
             </TouchableOpacity>
-            <ScrollView
-                keyboardShouldPersistTaps={'handled'}
-                keyboardDismissMode="on-drag"
+
+            <FlatList
+                style={styles.modalContainer}
+                bounces={false}
                 showsVerticalScrollIndicator={false}
-                style={styles.modalContainer}>
-                <TextInput
-                    autoFocus
-                    placeholder={'🔍'}
-                    placeholderTextColor={colors.grey}
-                    selectionColor={colors.secondary}
-                    onChangeText={setSearch}
-                    value={search}
-                    style={styles.input}
-                />
-                {countries
-                    .filter(
-                        country =>
-                            country.korName.toLowerCase().includes(search.toLowerCase()) ||
-                            country.engName.toLowerCase().includes(search.toLowerCase()) ||
-                            country.currency.toLowerCase().includes(search.toLowerCase()),
-                    )
-                    ?.map((country, index) => (
-                        <TouchableOpacity
-                            key={index}
-                            onPress={() => selectCountryFn(country)}
-                            style={styles.row}
-                            activeOpacity={0.8}>
-                            <Text
-                                style={{
-                                    ...fonts.LargeLight,
-                                    ...styles.modalText,
-                                    width: sideWidth,
-                                }}>
-                                {country.flag}
-                            </Text>
-                            <View style={styles.countryName}>
-                                <Text
-                                    style={{
-                                        ...fonts.MediumBold,
-                                        ...styles.modalText,
-                                    }}>
-                                    {country.korName}
-                                </Text>
-                                <Text
-                                    style={{
-                                        ...fonts.SmallLight,
-                                        ...styles.modalText,
-                                    }}>
-                                    {country.engName}
-                                </Text>
-                            </View>
-                            <Text
-                                style={{
-                                    ...fonts.MediumLight,
-                                    ...styles.modalText,
-                                    width: sideWidth,
-                                }}>
-                                {country?.currency}
-                            </Text>
-                            <Text style={{width: sideWidth}}>
-                                {selectedCurrency.currency === country.currency ? '✔️' : ''}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-            </ScrollView>
+                data={countries.filter(
+                    country =>
+                        country.korName.toLowerCase().includes(search.toLowerCase()) ||
+                        country.engName.toLowerCase().includes(search.toLowerCase()) ||
+                        country.currency.toLowerCase().includes(search.toLowerCase()),
+                )}
+                ListHeaderComponent={ListHeaderComponent}
+                renderItem={renderItem}
+                keyExtractor={(_, index) => index.toString()}
+            />
         </Modal>
     );
 };
