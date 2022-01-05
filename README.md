@@ -19,5 +19,6 @@
 >
 > > 1.  React Navigation Library 설치 가능여부 확인 메일 송수신
 > > 2.  Confirm Screen Style
-> > 3.  스크린 구상, 레이아웃, 디자인
-> > 4.  송금액 복사 버튼
+> > 3.  송금액 복사 버튼
+> > 4.  Toast
+> > 5.  Main Screen Input

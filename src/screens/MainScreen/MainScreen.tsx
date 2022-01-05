@@ -20,6 +20,7 @@ import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {AppRoute} from '../../../App';
 import countries from '../../utils/countries';
+import {ReactComponentElement} from 'react';
 
 export interface ISelectedCountry {
     flag: string;
@@ -35,10 +36,10 @@ interface IProps {
 
 const MainScreen: React.FC<IProps> = ({navigation}) => {
     const Korea = {flag: '🇰🇷', code: 'KR', currency: 'KRW', engName: 'South Korea', korName: '대한민국'};
-    const initCountry = {flag: '🇯🇵', code: 'JP', currency: 'JPY', engName: 'Japan', korName: '일본'};
+    const InitCountry = {flag: '🇯🇵', code: 'JP', currency: 'JPY', engName: 'Japan', korName: '일본'};
 
     const [currencyData, setCurrencyData] = useState<ICountry[]>(null);
-    const [selectedCurrency, setSelectedCurrency] = useState<ISelectedCountry>(initCountry);
+    const [selectedCurrency, setSelectedCurrency] = useState<ISelectedCountry>(InitCountry);
 
     const [krwAmount, setKrwAmount] = useState<string>(null);
     const [exchangeAmount, setExchangeAmount] = useState<string>(null);
