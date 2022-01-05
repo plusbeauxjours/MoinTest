@@ -1,23 +1,26 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {colors} from './src/colors';
 import MainScreen from './src/MainScreen';
+import ConfirmScreen from './src/ConfirmScreen';
 
-const App = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-      <MainScreen />
-    </SafeAreaView>
-  );
+const Stack = createStackNavigator();
+
+export enum AppRoute {
+    MAIN = 'Main Screen',
+    CONFIRM = 'Confirm Screen',
+}
+
+const App: React.FC = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={AppRoute.MAIN}>
+                <Stack.Screen name={AppRoute.MAIN} component={MainScreen} />
+                <Stack.Screen name={AppRoute.CONFIRM} component={ConfirmScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
-});
 
 export default App;
