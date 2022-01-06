@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {throttle} from 'lodash';
 
 export interface ICurrency {
     code: string;
@@ -38,15 +39,20 @@ export interface ICurrency {
     changeRate: number;
 }
 
-export const CurrencyApi = async (currency: string) => {
+export const CurrencyApi = throttle(async (currency: string) => {
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
     };
     const baseUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW';
     const fullUrl = `${baseUrl}${currency}`;
-    return axios.get(fullUrl, {headers});
-};
+    const result = axios.get(fullUrl, {headers});
+    if (result) {
+        return result;
+    } else {
+        //TODO: ERROR MSG
+    }
+}, 1000);
 
 export interface ICountry {
     name: string;
@@ -62,5 +68,10 @@ export const CountryApi = async () => {
     };
     const baseUrl = 'https://countriesnow.space/api/v0.1/countries/currency';
     const fullUrl = `${baseUrl}`;
-    return axios.get(fullUrl, {headers});
+    const result = axios.get(fullUrl, {headers});
+    if (result) {
+        return result;
+    } else {
+        //TODO: ERROR MSG
+    }
 };

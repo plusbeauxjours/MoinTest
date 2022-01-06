@@ -85,7 +85,6 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 <View style={styles.bottomBox}>
                     <TouchableOpacity style={styles.copyIcon} onPress={copyFn} activeOpacity={0.8}>
                         <Image source={require('../../../src/assets/copyIcon.png')} style={styles.smallImage} />
-                        {/* <Text style={{...fonts.SmallLight, ...styles.smallText}}>복사</Text> */}
                     </TouchableOpacity>
                     <View style={styles.row}>
                         <Text style={{...fonts.MediumBold, ...styles.smallText, alignItems: 'center'}}>{bankName}</Text>
