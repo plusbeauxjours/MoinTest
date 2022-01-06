@@ -1,25 +1,29 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useObserver} from 'mobx-react';
+
+import useStore from '../stores/useStore';
 
 import {colors} from '../utils/colors';
 import {fonts} from '../utils/fonts';
 
-interface IProps {
-    text: string;
-}
+interface IProps {}
 
-const Toast: React.FC<IProps> = ({text}) => {
-    return (
+const Toast: React.FC<IProps> = () => {
+    const {toast} = useStore();
+
+    return useObserver(() => (
         <View style={styles.modalPopupArea}>
             <View style={styles.modalPopup}>
-                <Text style={{...fonts.SmallLight, ...styles.smallText}}>{text}</Text>
+                <Text style={{...fonts.SmallLight, ...styles.smallText}}>{toast.text}</Text>
             </View>
         </View>
-    );
+    ));
 };
 
 const styles = StyleSheet.create({
     smallText: {
+        textAlign: 'center',
         color: colors.grey,
     },
     modalPopupArea: {

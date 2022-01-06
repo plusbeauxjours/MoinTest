@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {throttle} from 'lodash';
+import useStore from '../stores/useStore';
 
 export interface ICurrency {
     code: string;
@@ -39,7 +40,8 @@ export interface ICurrency {
     changeRate: number;
 }
 
-export const CurrencyApi = throttle(async (currency: string) => {
+export const CurrencyApi = throttle(async (currency: string): Promise<AxiosResponse<any, any>> => {
+    const {toast} = useStore();
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ export const CurrencyApi = throttle(async (currency: string) => {
     if (result) {
         return result;
     } else {
-        //TODO: ERROR MSG
+        toast.on('데이터를 받아오는데 문제가 발생하였습니다.');
     }
 }, 1000);
 
@@ -61,7 +63,8 @@ export interface ICountry {
     iso3: string;
 }
 
-export const CountryApi = async () => {
+export const CountryApi = async (): Promise<AxiosResponse<any, any>> => {
+    const {toast} = useStore();
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -72,6 +75,6 @@ export const CountryApi = async () => {
     if (result) {
         return result;
     } else {
-        //TODO: ERROR MSG
+        toast.on('데이터를 받아오는데 문제가 발생하였습니다.');
     }
 };

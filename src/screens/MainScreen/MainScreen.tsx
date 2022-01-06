@@ -1,15 +1,19 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View, TextInput} from 'react-native';
-import {ParamListBase} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View, TextInput, FlatList} from 'react-native';
 
+import {ParamListBase, RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {useObserver} from 'mobx-react';
+import {throttle} from 'lodash';
 import CountryModal from './components/CountryModal';
 
-import {CurrencyApi, ICountry} from '../../utils/api';
+import {CurrencyApi, ICurrency} from '../../utils/api';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {AppRoute} from '../../../App';
 import countries from '../../utils/countries';
+import Toast from '../../components/Toast';
+import useStore from '../../stores/useStore';
 
 export interface ISelectedCountry {
     flag: string;
@@ -26,6 +30,7 @@ interface IProps {
 const MainScreen: React.FC<IProps> = ({navigation}) => {
     const korAmountInputRef = useRef(null);
     const exchangeAmountInputRef = useRef(null);
+    const {toast, history} = useStore();
 
     const Korea = {flag: '🇰🇷', code: 'KR', currency: 'KRW', engName: 'South Korea', korName: '대한민국'};
     const InitCountry = {flag: '🇯🇵', code: 'JP', currency: 'JPY', engName: 'Japan', korName: '일본'};
@@ -33,8 +38,8 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     const MAXIMUM_KOR_AMOUNT = '55000000';
     const MINIMUM_KOR_AMOUNT = '0';
 
-    const [currencyData, setCurrencyData] = useState<ICountry>(null);
-    const [selectedCurrency, setSelectedCurrency] = useState<ISelectedCountry>(InitCountry);
+    const [currencyData, setCurrencyData] = useState<ICurrency>(null);
+    const [selectedCountry, setSelectedCountry] = useState<ISelectedCountry>(InitCountry);
 
     const [disalbed, setDisabled] = useState<boolean>(false);
     const [errorMsg, setErrorMsg] = useState<string>(null);
@@ -45,8 +50,8 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     const [isCountryModalOpen, setIsCountryModalOpen] = useState<boolean>(false);
     const [isCouponModalOpen, setIsCouponModalOpen] = useState<boolean>(false);
 
-    const getCurrencyData = async () => {
-        const {data} = await CurrencyApi(selectedCurrency.currency);
+    const getCurrencyData = async (): Promise<void> => {
+        const {data} = await CurrencyApi(selectedCountry.currency);
         setCurrencyData(data[0]);
 
         const priceByUnit = data[0].basePrice / data[0].currencyUnit;
@@ -55,18 +60,12 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             if (+((+krwAmount - FEES) / priceByUnit).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
                 setDisabled(true);
                 setIsErrorVisible(true);
-                setErrorMsg(`받는 금액은 최소 1 ${selectedCurrency.currency} 입니다.`);
-            } else if (+krwAmount > +MAXIMUM_KOR_AMOUNT) {
-                setDisabled(true);
-                setIsErrorVisible(true);
-                setErrorMsg('송금 최대 금액을 넘습니다.');
-                setExchangeAmount(((+MAXIMUM_KOR_AMOUNT - FEES) / priceByUnit).toFixed(0) + '');
-                setKrwAmount(MAXIMUM_KOR_AMOUNT);
+                setErrorMsg(`받는 금액은 최소 1 ${selectedCountry.currency} 입니다.`);
             } else {
                 setDisabled(false);
                 setErrorMsg(null);
                 setIsErrorVisible(false);
-                setExchangeAmount(((+krwAmount - FEES) / priceByUnit).toFixed(0) + '');
+                setExchangeAmount(((+krwAmount - FEES) / priceByUnit).toFixed(0));
             }
         }
         if (exchangeAmountInputRef?.current?.isFocused()) {
@@ -74,47 +73,65 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                 setDisabled(true);
                 setIsErrorVisible(true);
                 setErrorMsg(`받는 금액은 최소 1 ${Korea.currency} 입니다.`);
-            } else if (+(+exchangeAmount * priceByUnit - FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
-                setDisabled(true);
-                setIsErrorVisible(true);
-                setErrorMsg('송금 최대 금액을 넘습니다.');
-                setKrwAmount(MAXIMUM_KOR_AMOUNT);
-                setExchangeAmount(((+MAXIMUM_KOR_AMOUNT - FEES) / priceByUnit).toFixed(0) + '');
             } else {
                 setDisabled(false);
                 setErrorMsg(null);
                 setIsErrorVisible(false);
-                setKrwAmount((+exchangeAmount * priceByUnit + FEES).toFixed(0) + '');
+                setKrwAmount((+exchangeAmount * priceByUnit + FEES).toFixed(0));
             }
         }
     };
 
-    const onKrwAmountChange = (text): void => setKrwAmount(text.replace(/[^0-9]/g, ''));
-    const onExchangeAmountChange = (text): void => setExchangeAmount(text.replace(/[^0-9]/g, ''));
-    const addThousandsSeparators = (amount: string) => amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const onKrwAmountChange = (text): void => {
+        if (+text.replace(/[^0-9]/g, '') > +MAXIMUM_KOR_AMOUNT) {
+            setErrorMsg('송금 최대 금액을 넘습니다.');
+            setDisabled(true);
+            setIsErrorVisible(true);
+        } else {
+            setKrwAmount(text.replace(/[^0-9]/g, ''));
+        }
+    };
+
+    const onExchangeAmountChange = (text): void => {
+        const priceByUnit = currencyData.basePrice / currencyData.currencyUnit;
+        if (+(+text.replace(/[^0-9]/g, '') * priceByUnit - FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
+            setErrorMsg('송금 최대 금액을 넘습니다.');
+            setDisabled(true);
+            setIsErrorVisible(true);
+        } else {
+            setExchangeAmount(text.replace(/[^0-9]/g, ''));
+        }
+    };
+    const addThousandsSeparators = (amount: string): string => amount?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     const closeCountryModalOpen = (): void => setIsCountryModalOpen(false);
     const closeCouponModalOpen = (): void => setIsCouponModalOpen(false);
-    const goToConfirm = (): void =>
-        navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, krwAmount});
+    const goToConfirm = (): void => {
+        history.add({...selectedCountry, amount: exchangeAmount, createdAt: new Date()});
+        clearTimeout();
+        toast.on('송금중입니다.\n잠시만 기다려주세요.');
+        setTimeout(
+            throttle(() => {
+                navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, krwAmount});
+                toast.off();
+            }, 500),
+            500,
+        );
+    };
 
     const selectCountryFn = (currency: ISelectedCountry): void => {
-        setSelectedCurrency(currency);
+        setSelectedCountry(currency);
         setIsCountryModalOpen(false);
     };
 
     useEffect(() => {
-        setSelectedCurrency(countries.find(i => i.currency === 'JPY'));
-    }, []);
-
-    useEffect(() => {
         getCurrencyData();
     }, [
-        selectedCurrency,
+        selectedCountry,
         korAmountInputRef?.current?.isFocused() && krwAmount,
         exchangeAmountInputRef?.current?.isFocused() && exchangeAmount,
     ]);
 
-    return (
+    return useObserver(() => (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
@@ -154,8 +171,8 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                         onPress={() => setIsCountryModalOpen(true)}
                         activeOpacity={0.8}>
                         <Text>
-                            {selectedCurrency.flag}
-                            <Text style={fonts.MediumLight}>{selectedCurrency.currency}</Text>
+                            {selectedCountry.flag}
+                            <Text style={fonts.MediumLight}>{selectedCountry.currency}</Text>
                         </Text>
                     </TouchableOpacity>
                     <TextInput
@@ -179,15 +196,27 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                 <CountryModal
                     isCountryModalOpen={isCountryModalOpen}
                     closeCountryModalOpen={closeCountryModalOpen}
-                    selectedCurrency={selectedCurrency}
+                    selectedCountry={selectedCountry}
                     selectCountryFn={selectCountryFn}
                 />
-                <TouchableOpacity onPress={goToConfirm} disabled={!currencyData || disalbed}>
-                    <Text style={{...fonts.LargeBold, color: disalbed ? colors.grey : colors.black}}>GOTO CONFIRM</Text>
+                <TouchableOpacity
+                    onPress={goToConfirm}
+                    disabled={!currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT}>
+                    <Text
+                        style={{
+                            ...fonts.LargeBold,
+                            color:
+                                !currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT
+                                    ? colors.grey
+                                    : colors.black,
+                        }}>
+                        GOTO CONFIRM
+                    </Text>
                 </TouchableOpacity>
             </View>
+            {toast.isToastVisible && <Toast />}
         </SafeAreaView>
-    );
+    ));
 };
 
 const styles = StyleSheet.create({

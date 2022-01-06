@@ -9,7 +9,7 @@ import {countries} from '../../../utils/countries';
 interface IProps {
     isCountryModalOpen: boolean;
     closeCountryModalOpen: () => void;
-    selectedCurrency: ISelectedCountry;
+    selectedCountry: ISelectedCountry;
     selectCountryFn: (country: ISelectedCountry) => void;
 }
 
@@ -25,7 +25,7 @@ const sideWidth = 30;
 const CountryModal: React.FC<IProps> = ({
     isCountryModalOpen,
     closeCountryModalOpen,
-    selectedCurrency,
+    selectedCountry,
     selectCountryFn,
 }) => {
     const [search, setSearch] = useState<string>('');
@@ -85,10 +85,10 @@ const CountryModal: React.FC<IProps> = ({
                     }}>
                     {item?.currency}
                 </Text>
-                <Text style={{width: sideWidth}}>{selectedCurrency.code === item.code ? '✔️' : ''}</Text>
+                <Text style={{width: sideWidth}}>{selectedCountry.code === item.code ? '✔️' : ''}</Text>
             </TouchableOpacity>
         ),
-        [selectedCurrency],
+        [selectedCountry],
     );
 
     return (
@@ -101,7 +101,6 @@ const CountryModal: React.FC<IProps> = ({
             <TouchableOpacity onPress={closeModalAndSearch} style={styles.closeIcon} activeOpacity={1}>
                 <Text style={{fontSize: 15, color: colors.grey}}>✕</Text>
             </TouchableOpacity>
-
             <FlatList
                 style={styles.modalContainer}
                 bounces={false}

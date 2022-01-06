@@ -10,6 +10,9 @@ import {
     Clipboard,
     BackHandler,
 } from 'react-native';
+
+import {throttle} from 'lodash';
+import {useObserver} from 'mobx-react';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
@@ -17,6 +20,8 @@ import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {ICurrency} from '../../utils/api';
 import Toast from '../../components/Toast';
+import useStore from '../../stores/useStore';
+import {AppRoute} from '../../../App';
 
 interface IProps {
     navigation?: StackNavigationProp<ParamListBase>;
@@ -25,12 +30,12 @@ interface IProps {
 
 const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => {
     const {requestTime: _requestTime = null, currencyData: _currencyData = null, krwAmount = 0} = params;
+    const {toast, history} = useStore();
 
-    const [isToastVisible, setIsToastVisible] = useState<boolean>(false);
     const [requestTime, setRequestTime] = useState<Date>(null);
     const [currencyData, setCurrencyData] = useState<ICurrency>(null);
 
-    const addHour = (date, hours) => {
+    const addHour = (date, hours): Date => {
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() + hours);
         return newDate;
@@ -41,22 +46,26 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
     const month = +limitTime?.getMonth() + 1;
     const day = limitTime?.getDate();
     const hour = limitTime?.getHours();
-    const minute = limitTime?.getMinutes() < 10 ? '0' : '' + limitTime?.getMinutes() + '';
+    const minute =
+        limitTime?.getMinutes() === 0
+            ? '00'
+            : limitTime?.getMinutes() < 10
+            ? '0' + limitTime?.getMinutes() + ''
+            : limitTime?.getMinutes() + '';
     const bankName = currencyData?.provider;
     const accountNumber = currencyData?.timestamp + '';
     const accountPattern = 6;
 
-    const toastFn = () => {
+    const goToMain = throttle((item: ICurrency): void => navigation.replace(AppRoute.MAIN, {item}), 500);
+    const toastFn = (): void => {
         clearTimeout();
+        toast.on('계좌정보를 복사하였습니다.');
         setTimeout(() => {
-            setIsToastVisible(true);
-        }, 50);
-        setTimeout(() => {
-            setIsToastVisible(false);
+            toast.off();
         }, 1500);
     };
 
-    const copyFn = () => {
+    const copyFn = (): void => {
         toastFn();
         Clipboard.setString(bankName + accountNumber);
     };
@@ -71,7 +80,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
         return () => BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []);
 
-    return (
+    return useObserver(() => (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
@@ -100,10 +109,24 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 <Text style={{...fonts.Small, ...styles.smallText}}>수수료 :{}</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>환율 :{currencyData?.basePrice}</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>송금액 :{krwAmount}</Text>
+                <View style={styles.historyBox}>
+                    {history?.histories?.map(item => (
+                        <TouchableOpacity
+                            style={styles.history}
+                            onPress={() => history.remove(item)}
+                            activeOpacity={0.8}>
+                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.flag}</Text>
+                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>
+                                {item.amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                            </Text>
+                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.currency}</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
             </View>
-            {isToastVisible && <Toast text={'계좌정보를 복사하였습니다.'} />}
+            {toast.isToastVisible && <Toast />}
         </SafeAreaView>
-    );
+    ));
 };
 
 const styles = StyleSheet.create({
@@ -129,6 +152,24 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    historyBox: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: '100%',
+        justifyContent: 'center',
+    },
+    history: {
+        flexDirection: 'row',
+        padding: 2,
+        borderWidth: 0.5,
+        borderColor: colors.grey,
+        borderRadius: 3,
+        marginRight: 2,
+        marginBottom: 2,
+    },
+    historyText: {
+        marginLeft: 2,
     },
     bottomBox: {
         position: 'absolute',
