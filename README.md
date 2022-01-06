@@ -22,3 +22,10 @@
 > > 3.  송금액 복사 버튼
 > > 4.  Toast
 > > 5.  Main Screen Input
+
+> **3일차**
+>
+> > 1.  history MobX 사용하여 로깅
+> > 2.  error시 MobX 사용하여 팝업
+> > 3.  환율 계산
+> > 4.  네비게이션 팝업
