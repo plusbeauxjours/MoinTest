@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View, TextI
 
 import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {useObserver} from 'mobx-react';
+import {Observer} from 'mobx-react';
 import {throttle} from 'lodash';
 import CountryModal from './components/CountryModal';
 
@@ -111,7 +111,7 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
         toast.on('송금중입니다.\n잠시만 기다려주세요.');
         setTimeout(
             throttle(() => {
-                navigation.replace(AppRoute.CONFIRM, {requestTime: new Date(), currencyData, krwAmount});
+                navigation.replace(AppRoute.CONFIRM, {currencyData, krwAmount});
                 toast.off();
             }, 500),
             500,
@@ -131,7 +131,7 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
         exchangeAmountInputRef?.current?.isFocused() && exchangeAmount,
     ]);
 
-    return useObserver(() => (
+    return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
@@ -214,9 +214,9 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            {toast.isToastVisible && <Toast />}
+            <Observer>{() => toast.isToastVisible && <Toast />}</Observer>
         </SafeAreaView>
-    ));
+    );
 };
 
 const styles = StyleSheet.create({

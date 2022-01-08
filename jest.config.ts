@@ -1,8 +1,12 @@
 export default {
-    transform: {'^.+\\.(js|ts|jsx|tsx)?$': 'ts-jest'},
+    preset: 'react-native',
+    displayName: 'MoinTest',
+    moduleDirectories: ['node_modules'],
     verbose: true,
     testEnvironment: 'jsdom',
-    preset: 'ts-jest',
-    transformIgnorePatterns: [],
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    transformIgnorePatterns: ['/node_modules/(?!(@react-native|react-native)/).*/'],
+    moduleNameMapper: {
+        'react-dom': 'react-native',
+    },
 };

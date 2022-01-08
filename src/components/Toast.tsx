@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useObserver} from 'mobx-react';
+import {Observer} from 'mobx-react';
 
 import useStore from '../stores/useStore';
 
@@ -12,13 +12,15 @@ interface IProps {}
 const Toast: React.FC<IProps> = () => {
     const {toast} = useStore();
 
-    return useObserver(() => (
+    return (
         <View style={styles.modalPopupArea}>
             <View style={styles.modalPopup}>
-                <Text style={{...fonts.SmallLight, ...styles.smallText}}>{toast.text}</Text>
+                <Observer>
+                    {() => <Text style={{...fonts.SmallLight, ...styles.smallText}}>{toast.text}</Text>}
+                </Observer>
             </View>
         </View>
-    ));
+    );
 };
 
 const styles = StyleSheet.create({

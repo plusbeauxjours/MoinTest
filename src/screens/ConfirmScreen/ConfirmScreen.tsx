@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import {throttle} from 'lodash';
-import {useObserver} from 'mobx-react';
+import {Observer} from 'mobx-react';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
@@ -29,7 +29,7 @@ interface IProps {
 }
 
 const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => {
-    const {requestTime: _requestTime = null, currencyData: _currencyData = null, krwAmount = 0} = params;
+    const {currencyData: _currencyData = null, krwAmount = 0} = params;
     const {toast, history} = useStore();
 
     const [requestTime, setRequestTime] = useState<Date>(null);
@@ -71,7 +71,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
     };
 
     useEffect(() => {
-        !requestTime && setRequestTime(_requestTime);
+        !requestTime && setRequestTime(new Date());
         !currencyData && setCurrencyData(_currencyData);
     }, []);
 
@@ -80,7 +80,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
         return () => BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []);
 
-    return useObserver(() => (
+    return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
@@ -109,24 +109,29 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 <Text style={{...fonts.Small, ...styles.smallText}}>수수료 :{}</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>환율 :{currencyData?.basePrice}</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>송금액 :{krwAmount}</Text>
-                <View style={styles.historyBox}>
-                    {history?.histories?.map(item => (
-                        <TouchableOpacity
-                            style={styles.history}
-                            onPress={() => history.remove(item)}
-                            activeOpacity={0.8}>
-                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.flag}</Text>
-                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>
-                                {item.amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                            </Text>
-                            <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.currency}</Text>
-                        </TouchableOpacity>
-                    ))}
-                </View>
+                <Observer>
+                    {() => (
+                        <View style={styles.historyBox}>
+                            {history?.histories?.map((item, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.history}
+                                    onPress={() => history.remove(item)}
+                                    activeOpacity={0.8}>
+                                    <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.flag}</Text>
+                                    <Text style={{...fonts.SmallLight, ...styles.historyText}}>
+                                        {item.amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                    </Text>
+                                    <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.currency}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    )}
+                </Observer>
             </View>
-            {toast.isToastVisible && <Toast />}
+            <Observer>{() => toast.isToastVisible && <Toast />}</Observer>
         </SafeAreaView>
-    ));
+    );
 };
 
 const styles = StyleSheet.create({
