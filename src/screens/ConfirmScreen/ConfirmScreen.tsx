@@ -16,6 +16,7 @@ import {Observer} from 'mobx-react';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
+import {FEES, addThousandsSeparators, KOREA} from '../../utils/constants';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {ICurrency} from '../../utils/api';
@@ -106,9 +107,18 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                             accountNumber.slice(accountPattern + 2, -1)}
                     </Text>
                 </View>
-                <Text style={{...fonts.Small, ...styles.smallText}}>수수료 :{}</Text>
-                <Text style={{...fonts.Small, ...styles.smallText}}>환율 :{currencyData?.basePrice}</Text>
-                <Text style={{...fonts.Small, ...styles.smallText}}>송금액 :{krwAmount}</Text>
+                <Text style={{...fonts.Small, ...styles.smallText}}>
+                    수수료 :{addThousandsSeparators(FEES)}
+                    &nbsp;{KOREA.currency}
+                </Text>
+                <Text style={{...fonts.Small, ...styles.smallText}}>
+                    환율 :{addThousandsSeparators(currencyData?.basePrice + '')}
+                    &nbsp;{KOREA.currency}
+                </Text>
+                <Text style={{...fonts.Small, ...styles.smallText}}>
+                    송금액 :{addThousandsSeparators(krwAmount + '')}
+                    &nbsp;{KOREA.currency}
+                </Text>
                 <Observer>
                     {() => (
                         <View style={styles.historyBox}>
@@ -120,7 +130,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                                     activeOpacity={0.8}>
                                     <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.flag}</Text>
                                     <Text style={{...fonts.SmallLight, ...styles.historyText}}>
-                                        {item.amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                        {addThousandsSeparators(item.amount)}
                                     </Text>
                                     <Text style={{...fonts.SmallLight, ...styles.historyText}}>{item.currency}</Text>
                                 </TouchableOpacity>

@@ -10,18 +10,11 @@ let testingLib;
 describe('<MainScreen />', () => {
     beforeEach(() => {
         component = <MainScreen />;
-        testingLib = render(component);
     });
 
     it('renders', () => {
         const rendered = renderer.create(component).toJSON();
         expect(rendered).toMatchSnapshot();
         expect(rendered).toBeTruthy();
-    });
-
-    describe('interactions', () => {
-        beforeEach(() => {
-            testingLib = render(component);
-        });
     });
 });

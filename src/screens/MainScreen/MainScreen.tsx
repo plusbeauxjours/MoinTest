@@ -1,17 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View, TextInput, FlatList} from 'react-native';
 
-import {ParamListBase, RouteProp} from '@react-navigation/native';
+import {ParamListBase} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Observer} from 'mobx-react';
 import {throttle} from 'lodash';
 import CountryModal from './components/CountryModal';
 
+import {FEES, MAXIMUM_KOR_AMOUNT, MINIMUM_KOR_AMOUNT, addThousandsSeparators, KOREA} from '../../utils/constants';
 import {CurrencyApi, ICurrency} from '../../utils/api';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {AppRoute} from '../../../App';
-import countries from '../../utils/countries';
 import Toast from '../../components/Toast';
 import useStore from '../../stores/useStore';
 
@@ -32,11 +32,7 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     const exchangeAmountInputRef = useRef(null);
     const {toast, history} = useStore();
 
-    const Korea = {flag: '🇰🇷', code: 'KR', currency: 'KRW', engName: 'South Korea', korName: '대한민국'};
     const InitCountry = {flag: '🇯🇵', code: 'JP', currency: 'JPY', engName: 'Japan', korName: '일본'};
-    const FEES = 1000;
-    const MAXIMUM_KOR_AMOUNT = '55000000';
-    const MINIMUM_KOR_AMOUNT = '0';
 
     const [currencyData, setCurrencyData] = useState<ICurrency>(null);
     const [selectedCountry, setSelectedCountry] = useState<ISelectedCountry>(InitCountry);
@@ -52,12 +48,12 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
 
     const getCurrencyData = async (): Promise<void> => {
         const {data} = await CurrencyApi(selectedCountry.currency);
-        setCurrencyData(data[0]);
+        setCurrencyData(data[0] || null);
 
         const priceByUnit = data[0].basePrice / data[0].currencyUnit;
 
         if (korAmountInputRef?.current?.isFocused()) {
-            if (+((+krwAmount - FEES) / priceByUnit).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
+            if (+((+krwAmount - +FEES) / priceByUnit).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
                 setDisabled(true);
                 setIsErrorVisible(true);
                 setErrorMsg(`받는 금액은 최소 1 ${selectedCountry.currency} 입니다.`);
@@ -65,19 +61,19 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                 setDisabled(false);
                 setErrorMsg(null);
                 setIsErrorVisible(false);
-                setExchangeAmount(((+krwAmount - FEES) / priceByUnit).toFixed(0));
+                setExchangeAmount(((+krwAmount - +FEES) / priceByUnit).toFixed(0));
             }
         }
         if (exchangeAmountInputRef?.current?.isFocused()) {
-            if (+(+exchangeAmount * priceByUnit - FEES).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
+            if (+(+exchangeAmount * priceByUnit - +FEES).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
                 setDisabled(true);
                 setIsErrorVisible(true);
-                setErrorMsg(`받는 금액은 최소 1 ${Korea.currency} 입니다.`);
+                setErrorMsg(`받는 금액은 최소 1 ${KOREA.currency} 입니다.`);
             } else {
                 setDisabled(false);
                 setErrorMsg(null);
                 setIsErrorVisible(false);
-                setKrwAmount((+exchangeAmount * priceByUnit + FEES).toFixed(0));
+                setKrwAmount((+exchangeAmount * priceByUnit + +FEES).toFixed(0));
             }
         }
     };
@@ -93,8 +89,12 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     };
 
     const onExchangeAmountChange = (text): void => {
-        const priceByUnit = currencyData.basePrice / currencyData.currencyUnit;
-        if (+(+text.replace(/[^0-9]/g, '') * priceByUnit - FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
+        const priceByUnit = currencyData?.basePrice / currencyData?.currencyUnit;
+        if (!priceByUnit) {
+            setErrorMsg('환율 정보가 없습니다.');
+            setDisabled(true);
+            setIsErrorVisible(true);
+        } else if (+(+text.replace(/[^0-9]/g, '') * priceByUnit - +FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
             setErrorMsg('송금 최대 금액을 넘습니다.');
             setDisabled(true);
             setIsErrorVisible(true);
@@ -102,7 +102,6 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             setExchangeAmount(text.replace(/[^0-9]/g, ''));
         }
     };
-    const addThousandsSeparators = (amount: string): string => amount?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     const closeCountryModalOpen = (): void => setIsCountryModalOpen(false);
     const closeCouponModalOpen = (): void => setIsCouponModalOpen(false);
     const goToConfirm = (): void => {
@@ -142,8 +141,8 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                         activeOpacity={0.8}
                         disabled>
                         <Text>
-                            {Korea.flag}
-                            <Text style={fonts.MediumLight}>{Korea.currency}</Text>
+                            {KOREA.flag}
+                            <Text style={fonts.MediumLight}>{KOREA.currency}</Text>
                         </Text>
                     </TouchableOpacity>
                     <TextInput
