@@ -26,7 +26,7 @@ import {AppRoute} from '../../../App';
 
 interface IProps {
     navigation?: StackNavigationProp<ParamListBase>;
-    route?: RouteProp<{params: {requestTime?: Date; currencyData?: ICurrency; krwAmount: number}}, 'params'>;
+    route?: RouteProp<{params: {currencyData?: ICurrency; krwAmount: number}}, 'params'>;
 }
 
 const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => {
@@ -85,7 +85,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
-                <Image source={require('../../../src/assets/successImage.png')} style={styles.image} />
+                <Image source={(require('../../../src/assets/successImage.png'), 0)} style={styles.image} />
                 <Text style={{...fonts.LargeBold, ...styles.largText}}>송금 신청완료</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>
                     {year}년&nbsp;{month}월&nbsp;{day}일&nbsp;{hour > 12 ? '오후' : '오전'}&nbsp;
@@ -94,7 +94,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 <Text style={{...fonts.Small, ...styles.smallText}}>아래 가상계좌로 입금을 완료해주세요!</Text>
                 <View style={styles.bottomBox}>
                     <TouchableOpacity style={styles.copyIcon} onPress={copyFn} activeOpacity={0.8}>
-                        <Image source={require('../../../src/assets/copyIcon.png')} style={styles.smallImage} />
+                        <Image source={(require('../../../src/assets/copyIcon.png'), 0)} style={styles.smallImage} />
                     </TouchableOpacity>
                     <View style={styles.row}>
                         <Text style={{...fonts.MediumBold, ...styles.smallText, alignItems: 'center'}}>{bankName}</Text>

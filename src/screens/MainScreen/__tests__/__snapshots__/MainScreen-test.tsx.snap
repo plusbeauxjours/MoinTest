@@ -1,0 +1,2970 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainScreen /> renders 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "width": 100,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          Object {
+            "disabled": true,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "opacity": 1,
+            "width": 100,
+          }
+        }
+      >
+        <Text>
+          🇰🇷
+          <Text
+            style={
+              Object {
+                "fontSize": 12,
+                "fontWeight": "200",
+              }
+            }
+          >
+            KRW
+          </Text>
+        </Text>
+      </View>
+      <TextInput
+        autoCapitalize="none"
+        autoComplete="off"
+        autoFocus={true}
+        defaultValue="55000000"
+        keyboardType="numeric"
+        onChangeText={[Function]}
+        placeholder="0"
+        placeholderTextColor="#999"
+        selectionColor="#999"
+        style={
+          Object {
+            "fontSize": 14,
+            "fontWeight": "400",
+          }
+        }
+        textAlign="left"
+        value="55,000,000"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "width": 100,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "opacity": 1,
+            "width": 100,
+          }
+        }
+      >
+        <Text>
+          🇯🇵
+          <Text
+            style={
+              Object {
+                "fontSize": 12,
+                "fontWeight": "200",
+              }
+            }
+          >
+            JPY
+          </Text>
+        </Text>
+      </View>
+      <TextInput
+        autoCapitalize="none"
+        autoComplete="off"
+        defaultValue="0"
+        keyboardType="numeric"
+        onChangeText={[Function]}
+        placeholder="0"
+        placeholderTextColor="#999"
+        selectionColor="#999"
+        style={
+          Object {
+            "fontSize": 14,
+            "fontWeight": "400",
+          }
+        }
+        textAlign="left"
+        value="0"
+      />
+    </View>
+    <Modal
+      animationType="fade"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      transparent={true}
+      visible={false}
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(0, 0, 0, 0.6)",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      />
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "borderColor": "rgba(0, 0, 0, 0.6)",
+            "borderRadius": 20,
+            "borderWidth": 3,
+            "height": 30,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingLeft": 1,
+            "paddingTop": 1,
+            "position": "absolute",
+            "right": 65,
+            "top": 123.39999999999998,
+            "width": 30,
+            "zIndex": 3,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 15,
+            }
+          }
+        >
+          ✕
+        </Text>
+      </View>
+      <RCTScrollView
+        ListHeaderComponent={
+          <TextInput
+            autoFocus={true}
+            onChangeText={[Function]}
+            placeholder="🔍"
+            placeholderTextColor="#999"
+            selectionColor="#0067a3"
+            style={
+              Object {
+                "borderBottomColor": "#999",
+                "borderBottomWidth": 0.7,
+                "height": 35,
+                "marginVertical": 10,
+              }
+            }
+            value=""
+          />
+        }
+        bounces={false}
+        data={
+          Array [
+            Object {
+              "code": "GH",
+              "currency": "GHS",
+              "engName": "Ghana",
+              "flag": "🇬🇭",
+              "korName": "가나",
+            },
+            Object {
+              "code": "GA",
+              "currency": "XAF",
+              "engName": "Gabon",
+              "flag": "🇬🇦",
+              "korName": "가봉",
+            },
+            Object {
+              "code": "GY",
+              "currency": "GYD",
+              "engName": "Guyana",
+              "flag": "🇬🇾",
+              "korName": "가이아나",
+            },
+            Object {
+              "code": "GM",
+              "currency": "GMD",
+              "engName": "Gambia",
+              "flag": "🇬🇲",
+              "korName": "감비아",
+            },
+            Object {
+              "code": "GG",
+              "currency": "GBP",
+              "engName": "Guernsey",
+              "flag": "🇬🇬",
+              "korName": "건지 섬",
+            },
+            Object {
+              "code": "GP",
+              "currency": "EUR",
+              "engName": "Guadeloupe",
+              "flag": "🇬🇵",
+              "korName": "과들루프",
+            },
+            Object {
+              "code": "GT",
+              "currency": "GTQ",
+              "engName": "Guatemala",
+              "flag": "🇬🇹",
+              "korName": "과테말라",
+            },
+            Object {
+              "code": "GU",
+              "currency": "USD",
+              "engName": "Guam",
+              "flag": "🇬🇺",
+              "korName": "괌",
+            },
+            Object {
+              "code": "GD",
+              "currency": "XCD",
+              "engName": "Grenada",
+              "flag": "🇬🇩",
+              "korName": "그레나다",
+            },
+            Object {
+              "code": "GE",
+              "currency": "GEL",
+              "engName": "Georgia",
+              "flag": "🇬🇪",
+              "korName": "조지아",
+            },
+            Object {
+              "code": "GR",
+              "currency": "EUR",
+              "engName": "Greece",
+              "flag": "🇬🇷",
+              "korName": "그리스",
+            },
+            Object {
+              "code": "GL",
+              "currency": "DKK",
+              "engName": "Greenland",
+              "flag": "🇬🇱",
+              "korName": "그린란드",
+            },
+            Object {
+              "code": "GN",
+              "currency": "GNF",
+              "engName": "Guinea",
+              "flag": "🇬🇳",
+              "korName": "기니",
+            },
+            Object {
+              "code": "GW",
+              "currency": "XOF",
+              "engName": "Guinea-Bissau",
+              "flag": "🇬🇼",
+              "korName": "기니비사우",
+            },
+            Object {
+              "code": "NA",
+              "currency": "NAD",
+              "engName": "Namibia",
+              "flag": "🇳🇦",
+              "korName": "나미비아",
+            },
+            Object {
+              "code": "NR",
+              "currency": "AUD",
+              "engName": "Nauru",
+              "flag": "🇳🇷",
+              "korName": "나우루",
+            },
+            Object {
+              "code": "NG",
+              "currency": "NGN",
+              "engName": "Nigeria",
+              "flag": "🇳🇬",
+              "korName": "나이지리아",
+            },
+            Object {
+              "code": "ZA",
+              "currency": "ZAR",
+              "engName": "South Africa",
+              "flag": "🇿🇦",
+              "korName": "남아프리카 공화국",
+            },
+            Object {
+              "code": "NL",
+              "currency": "EUR",
+              "engName": "Netherlands",
+              "flag": "🇳🇱",
+              "korName": "네덜란드",
+            },
+            Object {
+              "code": "NP",
+              "currency": "NPR",
+              "engName": "Nepal",
+              "flag": "🇳🇵",
+              "korName": "네팔",
+            },
+            Object {
+              "code": "NO",
+              "currency": "NOK",
+              "engName": "Norway",
+              "flag": "🇳🇴",
+              "korName": "노르웨이",
+            },
+            Object {
+              "code": "NF",
+              "currency": "AUD",
+              "engName": "Norfolk Island",
+              "flag": "🇳🇫",
+              "korName": "노퍽 섬",
+            },
+            Object {
+              "code": "NC",
+              "currency": "XPF",
+              "engName": "New Caledonia",
+              "flag": "🇳🇨",
+              "korName": "누벨칼레도니",
+            },
+            Object {
+              "code": "NZ",
+              "currency": "NZD",
+              "engName": "New Zealand",
+              "flag": "🇳🇿",
+              "korName": "뉴질랜드",
+            },
+            Object {
+              "code": "NU",
+              "currency": "NZD",
+              "engName": "Niue",
+              "flag": "🇳🇺",
+              "korName": "니우에",
+            },
+            Object {
+              "code": "NE",
+              "currency": "XOF",
+              "engName": "Niger",
+              "flag": "🇳🇪",
+              "korName": "니제르",
+            },
+            Object {
+              "code": "NI",
+              "currency": "NIO",
+              "engName": "Nicaragua",
+              "flag": "🇳🇮",
+              "korName": "니카라과",
+            },
+            Object {
+              "code": "KR",
+              "currency": "KRW",
+              "engName": "South Korea",
+              "flag": "🇰🇷",
+              "korName": "대한민국",
+            },
+            Object {
+              "code": "DK",
+              "currency": "DKK",
+              "engName": "Denmark",
+              "flag": "🇩🇰",
+              "korName": "덴마크",
+            },
+            Object {
+              "code": "DM",
+              "currency": "XCD",
+              "engName": "Dominica",
+              "flag": "🇩🇲",
+              "korName": "도미니카",
+            },
+            Object {
+              "code": "DO",
+              "currency": "DOP",
+              "engName": "Dominican Republic",
+              "flag": "🇨🇩",
+              "korName": "도미니카 공화국",
+            },
+            Object {
+              "code": "DE",
+              "currency": "EUR",
+              "engName": "Germany",
+              "flag": "🇩🇪",
+              "korName": "독일",
+            },
+            Object {
+              "code": "TL",
+              "currency": "USD",
+              "engName": "Timor-Leste",
+              "flag": "🇹🇱",
+              "korName": "동티모르",
+            },
+            Object {
+              "code": "LA",
+              "currency": "LAK",
+              "engName": "Laos",
+              "flag": "🇱🇦",
+              "korName": "라오스",
+            },
+            Object {
+              "code": "LR",
+              "currency": "LRD",
+              "engName": "Liberia",
+              "flag": "🇱🇷",
+              "korName": "라이베리아",
+            },
+            Object {
+              "code": "LV",
+              "currency": "EUR",
+              "engName": "Latvia",
+              "flag": "🇱🇻",
+              "korName": "라트비아",
+            },
+            Object {
+              "code": "RU",
+              "currency": "RUB",
+              "engName": "Russia",
+              "flag": "🇷🇺",
+              "korName": "러시아",
+            },
+            Object {
+              "code": "LB",
+              "currency": "LBP",
+              "engName": "Lebanon",
+              "flag": "🇱🇧",
+              "korName": "레바논",
+            },
+            Object {
+              "code": "LS",
+              "currency": "LSL",
+              "engName": "Lesotho",
+              "flag": "🇱🇸",
+              "korName": "레소토",
+            },
+            Object {
+              "code": "RE",
+              "currency": "EUR",
+              "engName": "Reunion",
+              "flag": "🇫🇷",
+              "korName": "레위니옹",
+            },
+            Object {
+              "code": "RO",
+              "currency": "RON",
+              "engName": "Romania",
+              "flag": "🇷🇴",
+              "korName": "루마니아",
+            },
+            Object {
+              "code": "LU",
+              "currency": "EUR",
+              "engName": "Luxembourg",
+              "flag": "🇱🇺",
+              "korName": "룩셈부르크",
+            },
+            Object {
+              "code": "RW",
+              "currency": "RWF",
+              "engName": "Rwanda",
+              "flag": "🇷🇼",
+              "korName": "르완다",
+            },
+            Object {
+              "code": "LY",
+              "currency": "LYD",
+              "engName": "Libyan Arab Jamahiriya",
+              "flag": "🇱🇾",
+              "korName": "리비아",
+            },
+            Object {
+              "code": "LT",
+              "currency": "LTL",
+              "engName": "Lithuania",
+              "flag": "🇱🇹",
+              "korName": "리투아니아",
+            },
+            Object {
+              "code": "LI",
+              "currency": "CHF",
+              "engName": "Liechtenstein",
+              "flag": "🇱🇮",
+              "korName": "리히텐슈타인",
+            },
+            Object {
+              "code": "MG",
+              "currency": "MGA",
+              "engName": "Madagascar",
+              "flag": "🇲🇬",
+              "korName": "마다가스카르",
+            },
+            Object {
+              "code": "MQ",
+              "currency": "EUR",
+              "engName": "Martinique",
+              "flag": "🇲🇶",
+              "korName": "마르티니크",
+            },
+            Object {
+              "code": "MH",
+              "currency": "USD",
+              "engName": "Marshall Islands",
+              "flag": "🇲🇭",
+              "korName": "마셜 제도",
+            },
+            Object {
+              "code": "YT",
+              "currency": "EUR",
+              "engName": "Mayotte",
+              "flag": "🇾🇹",
+              "korName": "마요트",
+            },
+            Object {
+              "code": "MO",
+              "currency": "MOP",
+              "engName": "Macao",
+              "flag": "🇲🇴",
+              "korName": "마카오",
+            },
+            Object {
+              "code": "MK",
+              "currency": "MKD",
+              "engName": "Macedonia",
+              "flag": "🇲🇰",
+              "korName": "마케도니아 공화국",
+            },
+            Object {
+              "code": "MW",
+              "currency": "MWK",
+              "engName": "Malawi",
+              "flag": "🇲🇼",
+              "korName": "말라위",
+            },
+            Object {
+              "code": "MY",
+              "currency": "MYR",
+              "engName": "Malaysia",
+              "flag": "🇲🇾",
+              "korName": "말레이시아",
+            },
+            Object {
+              "code": "ML",
+              "currency": "XOF",
+              "engName": "Mali",
+              "flag": "🇲🇱",
+              "korName": "말리",
+            },
+            Object {
+              "code": "IM",
+              "currency": "GBP",
+              "engName": "Isle of Man",
+              "flag": "🇮🇲",
+              "korName": "맨 섬",
+            },
+            Object {
+              "code": "MX",
+              "currency": "MXN",
+              "engName": "Mexico",
+              "flag": "🇲🇽",
+              "korName": "멕시코",
+            },
+            Object {
+              "code": "MC",
+              "currency": "EUR",
+              "engName": "Monaco",
+              "flag": "🇲🇨",
+              "korName": "모나코",
+            },
+            Object {
+              "code": "MA",
+              "currency": "MAD",
+              "engName": "Morocco",
+              "flag": "🇲🇦",
+              "korName": "모로코",
+            },
+            Object {
+              "code": "MU",
+              "currency": "MUR",
+              "engName": "Mauritius",
+              "flag": "🇲🇺",
+              "korName": "모리셔스",
+            },
+            Object {
+              "code": "MR",
+              "currency": "MRO",
+              "engName": "Mauritania",
+              "flag": "🇲🇷",
+              "korName": "모리타니",
+            },
+            Object {
+              "code": "MZ",
+              "currency": "MZN",
+              "engName": "Mozambique",
+              "flag": "🇲🇿",
+              "korName": "모잠비크",
+            },
+            Object {
+              "code": "ME",
+              "currency": "EUR",
+              "engName": "Montenegro",
+              "flag": "🇲🇪",
+              "korName": "몬테네그로",
+            },
+            Object {
+              "code": "MS",
+              "currency": "XCD",
+              "engName": "Montserrat",
+              "flag": "🇲🇸",
+              "korName": "몬트세랫",
+            },
+            Object {
+              "code": "MD",
+              "currency": "MDL",
+              "engName": "Moldova",
+              "flag": "🇲🇩",
+              "korName": "몰도바",
+            },
+            Object {
+              "code": "MV",
+              "currency": "MVR",
+              "engName": "Maldives",
+              "flag": "🇲🇻",
+              "korName": "몰디브",
+            },
+            Object {
+              "code": "MT",
+              "currency": "EUR",
+              "engName": "Malta",
+              "flag": "🇲🇹",
+              "korName": "몰타",
+            },
+            Object {
+              "code": "MN",
+              "currency": "MNT",
+              "engName": "Mongolia",
+              "flag": "🇲🇳",
+              "korName": "몽골",
+            },
+            Object {
+              "code": "US",
+              "currency": "USD",
+              "engName": "United States",
+              "flag": "🇺🇸",
+              "korName": "미국",
+            },
+            Object {
+              "code": "UM",
+              "currency": "USD",
+              "engName": "United States Minor Outlying Islands",
+              "flag": "🇺🇸",
+              "korName": "미국령 군소 제도",
+            },
+            Object {
+              "code": "VI",
+              "currency": "USD",
+              "engName": "Virgin Islands, U.S.",
+              "flag": "🇻🇮",
+              "korName": "미국령 버진아일랜드",
+            },
+            Object {
+              "code": "MM",
+              "currency": "MMK",
+              "engName": "Myanmar",
+              "flag": "🇲🇲",
+              "korName": "미얀마",
+            },
+            Object {
+              "code": "FM",
+              "currency": "USD",
+              "engName": "Micronesia",
+              "flag": "🇫🇲",
+              "korName": "미크로네시아 연방",
+            },
+            Object {
+              "code": "VU",
+              "currency": "VUV",
+              "engName": "Vanuatu",
+              "flag": "🇻🇺",
+              "korName": "바누아투",
+            },
+            Object {
+              "code": "BH",
+              "currency": "BHD",
+              "engName": "Bahrain",
+              "flag": "🇧🇸",
+              "korName": "바레인",
+            },
+            Object {
+              "code": "BB",
+              "currency": "BBD",
+              "engName": "Barbados",
+              "flag": "🇧🇧",
+              "korName": "바베이도스",
+            },
+            Object {
+              "code": "VA",
+              "currency": "EUR",
+              "engName": "Holy See",
+              "flag": "🇻🇦",
+              "korName": "바티칸 시국",
+            },
+            Object {
+              "code": "BS",
+              "currency": "BSD",
+              "engName": "Bahamas",
+              "flag": "🇧🇸",
+              "korName": "바하마",
+            },
+            Object {
+              "code": "BD",
+              "currency": "BDT",
+              "engName": "Bangladesh",
+              "flag": "🇧🇩",
+              "korName": "방글라데시",
+            },
+            Object {
+              "code": "BM",
+              "currency": "BMD",
+              "engName": "Bermuda",
+              "flag": "🇧🇲",
+              "korName": "버뮤다",
+            },
+            Object {
+              "code": "BJ",
+              "currency": "XOF",
+              "engName": "Benin",
+              "flag": "🇧🇯",
+              "korName": "베냉",
+            },
+            Object {
+              "code": "VE",
+              "currency": "VEF",
+              "engName": "Venezuela",
+              "flag": "🇻🇪",
+              "korName": "베네수엘라",
+            },
+            Object {
+              "code": "VN",
+              "currency": "VND",
+              "engName": "Vietnam",
+              "flag": "🇻🇳",
+              "korName": "베트남",
+            },
+            Object {
+              "code": "BE",
+              "currency": "EUR",
+              "engName": "Belgium",
+              "flag": "🇧🇪",
+              "korName": "벨기에",
+            },
+            Object {
+              "code": "BY",
+              "currency": "BYR",
+              "engName": "Belarus",
+              "flag": "🇧🇾",
+              "korName": "벨라루스",
+            },
+            Object {
+              "code": "BZ",
+              "currency": "BZD",
+              "engName": "Belize",
+              "flag": "🇧🇿",
+              "korName": "벨리즈",
+            },
+            Object {
+              "code": "BA",
+              "currency": "BAM",
+              "engName": "Bosnia and Herzegovina",
+              "flag": "🇧🇦",
+              "korName": "보스니아 헤르체고비나",
+            },
+            Object {
+              "code": "BW",
+              "currency": "BWP",
+              "engName": "Botswana",
+              "flag": "🇧🇼",
+              "korName": "보츠와나",
+            },
+            Object {
+              "code": "BO",
+              "currency": "BOB",
+              "engName": "Bolivia",
+              "flag": "🇧🇴",
+              "korName": "볼리비아",
+            },
+            Object {
+              "code": "BI",
+              "currency": "BIF",
+              "engName": "Burundi",
+              "flag": "🇧🇮",
+              "korName": "부룬디",
+            },
+            Object {
+              "code": "BF",
+              "currency": "XOF",
+              "engName": "Burkina Faso",
+              "flag": "🇧🇫",
+              "korName": "부르키나파소",
+            },
+            Object {
+              "code": "BV",
+              "currency": "NOK",
+              "engName": "Bouvet Island",
+              "flag": "🏳",
+              "korName": "부베 섬",
+            },
+            Object {
+              "code": "BT",
+              "currency": "BTN",
+              "engName": "Bhutan",
+              "flag": "🇧🇹",
+              "korName": "부탄",
+            },
+            Object {
+              "code": "MP",
+              "currency": "USD",
+              "engName": "Northern Mariana Islands",
+              "flag": "🏳",
+              "korName": "북마리아나 제도",
+            },
+            Object {
+              "code": "BG",
+              "currency": "BGN",
+              "engName": "Bulgaria",
+              "flag": "🇧🇬",
+              "korName": "불가리아",
+            },
+            Object {
+              "code": "BR",
+              "currency": "BRL",
+              "engName": "Brazil",
+              "flag": "🇧🇷",
+              "korName": "브라질",
+            },
+            Object {
+              "code": "BN",
+              "currency": "BND",
+              "engName": "Brunei Darussalam",
+              "flag": "🇧🇳",
+              "korName": "브루나이",
+            },
+            Object {
+              "code": "WS",
+              "currency": "WST",
+              "engName": "Samoa",
+              "flag": "🇼🇸",
+              "korName": "사모아",
+            },
+            Object {
+              "code": "SA",
+              "currency": "SAR",
+              "engName": "Saudi Arabia",
+              "flag": "🇸🇦",
+              "korName": "사우디아라비아",
+            },
+            Object {
+              "code": "GS",
+              "currency": "GBP",
+              "engName": "South Georgia",
+              "flag": "🇬🇸",
+              "korName": "사우스조지아 사우스샌드위치 제도",
+            },
+            Object {
+              "code": "SM",
+              "currency": "EUR",
+              "engName": "San Marino",
+              "flag": "🇸🇲",
+              "korName": "산마리노",
+            },
+            Object {
+              "code": "ST",
+              "currency": "STD",
+              "engName": "Sao Tome and Principe",
+              "flag": "🇸🇹",
+              "korName": "상투메 프린시페",
+            },
+            Object {
+              "code": "PM",
+              "currency": "EUR",
+              "engName": "Saint Pierre and Miquelon",
+              "flag": "🇵🇲",
+              "korName": "생피에르 미클롱",
+            },
+            Object {
+              "code": "EH",
+              "currency": "MAD",
+              "engName": "Western Sahara",
+              "flag": "🇪🇭",
+              "korName": "서사하라",
+            },
+            Object {
+              "code": "SN",
+              "currency": "XOF",
+              "engName": "Senegal",
+              "flag": "🇸🇳",
+              "korName": "세네갈",
+            },
+            Object {
+              "code": "RS",
+              "currency": "RSD",
+              "engName": "Serbia",
+              "flag": "🇷🇸",
+              "korName": "세르비아",
+            },
+            Object {
+              "code": "SC",
+              "currency": "SCR",
+              "engName": "Seychelles",
+              "flag": "🇸🇨",
+              "korName": "세이셸",
+            },
+            Object {
+              "code": "LC",
+              "currency": "XCD",
+              "engName": "Saint Lucia",
+              "flag": "🇱🇨",
+              "korName": "세인트루시아",
+            },
+            Object {
+              "code": "VC",
+              "currency": "XCD",
+              "engName": "Saint Vincent and the Grenadines",
+              "flag": "🇻🇨",
+              "korName": "세인트빈센트 그레나딘",
+            },
+            Object {
+              "code": "KN",
+              "currency": "XCD",
+              "engName": "Saint Kitts and Nevis",
+              "flag": "🇰🇳",
+              "korName": "세인트키츠 네비스",
+            },
+            Object {
+              "code": "SH",
+              "currency": "SHP",
+              "engName": "Saint Helena",
+              "flag": "🇸🇭",
+              "korName": "세인트헬레나",
+            },
+            Object {
+              "code": "SO",
+              "currency": "SOS",
+              "engName": "Somalia",
+              "flag": "🇸🇴",
+              "korName": "소말리아",
+            },
+            Object {
+              "code": "SB",
+              "currency": "SBD",
+              "engName": "Solomon Islands",
+              "flag": "🇸🇧",
+              "korName": "솔로몬 제도",
+            },
+            Object {
+              "code": "SD",
+              "currency": "SDG",
+              "engName": "Sudan",
+              "flag": "🇸🇩",
+              "korName": "수단",
+            },
+            Object {
+              "code": "SR",
+              "currency": "SRD",
+              "engName": "Suriname",
+              "flag": "🇸🇷",
+              "korName": "수리남",
+            },
+            Object {
+              "code": "LK",
+              "currency": "LKR",
+              "engName": "Sri Lanka",
+              "flag": "🇱🇰",
+              "korName": "스리랑카",
+            },
+            Object {
+              "code": "SJ",
+              "currency": "NOK",
+              "engName": "Svalbard and Jan Mayen",
+              "flag": "🇩🇰",
+              "korName": "스발바르 얀마옌",
+            },
+            Object {
+              "code": "SZ",
+              "currency": "SZL",
+              "engName": "Swaziland",
+              "flag": "🇸🇿",
+              "korName": "스와질란드",
+            },
+            Object {
+              "code": "SE",
+              "currency": "SEK",
+              "engName": "Sweden",
+              "flag": "🇸🇪",
+              "korName": "스웨덴",
+            },
+            Object {
+              "code": "CH",
+              "currency": "CHF",
+              "engName": "Switzerland",
+              "flag": "🇨🇭",
+              "korName": "스위스",
+            },
+            Object {
+              "code": "ES",
+              "currency": "EUR",
+              "engName": "Spain",
+              "flag": "🇪🇸",
+              "korName": "스페인",
+            },
+            Object {
+              "code": "SK",
+              "currency": "EUR",
+              "engName": "Slovakia",
+              "flag": "🇸🇰",
+              "korName": "슬로바키아",
+            },
+            Object {
+              "code": "SI",
+              "currency": "EUR",
+              "engName": "Slovenia",
+              "flag": "🇸🇮",
+              "korName": "슬로베니아",
+            },
+            Object {
+              "code": "SY",
+              "currency": "SYP",
+              "engName": "Syrian Arab Republic",
+              "flag": "🇸🇾",
+              "korName": "시리아",
+            },
+            Object {
+              "code": "SL",
+              "currency": "SLL",
+              "engName": "Sierra Leone",
+              "flag": "🇸🇱",
+              "korName": "시에라리온",
+            },
+            Object {
+              "code": "SG",
+              "currency": "SGD",
+              "engName": "Singapore",
+              "flag": "🇸🇬",
+              "korName": "싱가포르",
+            },
+            Object {
+              "code": "AE",
+              "currency": "AED",
+              "engName": "United Arab Emirates",
+              "flag": "🇦🇪",
+              "korName": "아랍에미리트",
+            },
+            Object {
+              "code": "AW",
+              "currency": "AWG",
+              "engName": "Aruba",
+              "flag": "🇦🇼",
+              "korName": "아루바",
+            },
+            Object {
+              "code": "AM",
+              "currency": "AMD",
+              "engName": "Armenia",
+              "flag": "🇦🇲",
+              "korName": "아르메니아",
+            },
+            Object {
+              "code": "AR",
+              "currency": "ARS",
+              "engName": "Argentina",
+              "flag": "🇦🇷",
+              "korName": "아르헨티나",
+            },
+            Object {
+              "code": "AS",
+              "currency": "USD",
+              "engName": "American Samoa",
+              "flag": "🇺🇸",
+              "korName": "아메리칸사모아",
+            },
+            Object {
+              "code": "IS",
+              "currency": "ISK",
+              "engName": "Iceland",
+              "flag": "🇮🇸",
+              "korName": "아이슬란드",
+            },
+            Object {
+              "code": "HT",
+              "currency": "HTG",
+              "engName": "Haiti",
+              "flag": "🇭🇹",
+              "korName": "아이티",
+            },
+            Object {
+              "code": "IE",
+              "currency": "EUR",
+              "engName": "Ireland",
+              "flag": "🇮🇪",
+              "korName": "아일랜드",
+            },
+            Object {
+              "code": "AZ",
+              "currency": "AZN",
+              "engName": "Azerbaijan",
+              "flag": "🇦🇿",
+              "korName": "아제르바이잔",
+            },
+            Object {
+              "code": "AF",
+              "currency": "AFN",
+              "engName": "Afghanistan",
+              "flag": "🇦🇫",
+              "korName": "아프가니스탄",
+            },
+            Object {
+              "code": "AD",
+              "currency": "EUR",
+              "engName": "Andorra",
+              "flag": "🇦🇩",
+              "korName": "안도라",
+            },
+            Object {
+              "code": "AL",
+              "currency": "ALL",
+              "engName": "Albania",
+              "flag": "🇦🇱",
+              "korName": "알바니아",
+            },
+            Object {
+              "code": "DZ",
+              "currency": "DZD",
+              "engName": "Algeria",
+              "flag": "🇩🇿",
+              "korName": "알제리",
+            },
+            Object {
+              "code": "AO",
+              "currency": "AOA",
+              "engName": "Angola",
+              "flag": "🇦🇴",
+              "korName": "앙골라",
+            },
+            Object {
+              "code": "AG",
+              "currency": "XCD",
+              "engName": "Antigua and Barbuda",
+              "flag": "🇦🇬",
+              "korName": "앤티가 바부다",
+            },
+            Object {
+              "code": "AI",
+              "currency": "XCD",
+              "engName": "Anguilla",
+              "flag": "🇦🇮",
+              "korName": "앵귈라",
+            },
+            Object {
+              "code": "ER",
+              "currency": "ERN",
+              "engName": "Eritrea",
+              "flag": "🇪🇷",
+              "korName": "에리트레아",
+            },
+            Object {
+              "code": "EE",
+              "currency": "EUR",
+              "engName": "Estonia",
+              "flag": "🇪🇪",
+              "korName": "에스토니아",
+            },
+            Object {
+              "code": "EC",
+              "currency": "USD",
+              "engName": "Ecuador",
+              "flag": "🇪🇨",
+              "korName": "에콰도르",
+            },
+            Object {
+              "code": "ET",
+              "currency": "ETB",
+              "engName": "Ethiopia",
+              "flag": "🇪🇹",
+              "korName": "에티오피아",
+            },
+            Object {
+              "code": "SV",
+              "currency": "USD",
+              "engName": "El Salvador",
+              "flag": "🇸🇻",
+              "korName": "엘살바도르",
+            },
+            Object {
+              "code": "GB",
+              "currency": "GBP",
+              "engName": "United Kingdom",
+              "flag": "🇬🇧",
+              "korName": "영국",
+            },
+            Object {
+              "code": "VG",
+              "currency": "USD",
+              "engName": "Virgin Islands, British",
+              "flag": "🇻🇬",
+              "korName": "영국령 버진아일랜드",
+            },
+            Object {
+              "code": "IO",
+              "currency": "USD",
+              "engName": "British Indian Ocean Territory",
+              "flag": "🇮🇴",
+              "korName": "영국령 인도양 지역",
+            },
+            Object {
+              "code": "YE",
+              "currency": "YER",
+              "engName": "Yemen",
+              "flag": "🇾🇪",
+              "korName": "예멘",
+            },
+            Object {
+              "code": "OM",
+              "currency": "OMR",
+              "engName": "Oman",
+              "flag": "🇴🇲",
+              "korName": "오만",
+            },
+            Object {
+              "code": "AU",
+              "currency": "AUD",
+              "engName": "Australia",
+              "flag": "🇦🇺",
+              "korName": "오스트레일리아",
+            },
+            Object {
+              "code": "AT",
+              "currency": "EUR",
+              "engName": "Austria",
+              "flag": "🇦🇹",
+              "korName": "오스트리아",
+            },
+            Object {
+              "code": "HN",
+              "currency": "HNL",
+              "engName": "Honduras",
+              "flag": "🇭🇳",
+              "korName": "온두라스",
+            },
+            Object {
+              "code": "AX",
+              "currency": "EUR",
+              "engName": "Åland Islands",
+              "flag": "🇦🇽",
+              "korName": "올란드 제도",
+            },
+            Object {
+              "code": "JO",
+              "currency": "JOD",
+              "engName": "Jordan",
+              "flag": "🇯🇴",
+              "korName": "요르단",
+            },
+            Object {
+              "code": "UG",
+              "currency": "UGX",
+              "engName": "Uganda",
+              "flag": "🇺🇬",
+              "korName": "우간다",
+            },
+            Object {
+              "code": "UY",
+              "currency": "UYU",
+              "engName": "Uruguay",
+              "flag": "🇺🇾",
+              "korName": "우루과이",
+            },
+            Object {
+              "code": "UZ",
+              "currency": "UZS",
+              "engName": "Uzbekistan",
+              "flag": "🇺🇿",
+              "korName": "우즈베키스탄",
+            },
+            Object {
+              "code": "UA",
+              "currency": "UAH",
+              "engName": "Ukraine",
+              "flag": "🇺🇦",
+              "korName": "우크라이나",
+            },
+            Object {
+              "code": "WF",
+              "currency": "XPF",
+              "engName": "Wallis and Futuna",
+              "flag": "🇼🇫",
+              "korName": "왈리스 퓌튀나",
+            },
+            Object {
+              "code": "IQ",
+              "currency": "IQD",
+              "engName": "Iraq",
+              "flag": "🇮🇶",
+              "korName": "이라크",
+            },
+            Object {
+              "code": "IR",
+              "currency": "IRR",
+              "engName": "Iran",
+              "flag": "🇮🇷",
+              "korName": "이란",
+            },
+            Object {
+              "code": "IL",
+              "currency": "ILS",
+              "engName": "Israel",
+              "flag": "🇮🇱",
+              "korName": "이스라엘",
+            },
+            Object {
+              "code": "EG",
+              "currency": "EGP",
+              "engName": "Egypt",
+              "flag": "🇪🇬",
+              "korName": "이집트",
+            },
+            Object {
+              "code": "IT",
+              "currency": "EUR",
+              "engName": "Italy",
+              "flag": "🇮🇹",
+              "korName": "이탈리아",
+            },
+            Object {
+              "code": "ID",
+              "currency": "IDR",
+              "engName": "Indonesia",
+              "flag": "🇮🇩",
+              "korName": "인도네시아",
+            },
+            Object {
+              "code": "IN",
+              "currency": "INR",
+              "engName": "India",
+              "flag": "🇮🇳",
+              "korName": "인도",
+            },
+            Object {
+              "code": "JP",
+              "currency": "JPY",
+              "engName": "Japan",
+              "flag": "🇯🇵",
+              "korName": "일본",
+            },
+            Object {
+              "code": "JM",
+              "currency": "JMD",
+              "engName": "Jamaica",
+              "flag": "🇯🇲",
+              "korName": "자메이카",
+            },
+            Object {
+              "code": "ZM",
+              "currency": "ZMK",
+              "engName": "Zambia",
+              "flag": "🇿🇲",
+              "korName": "잠비아",
+            },
+            Object {
+              "code": "JE",
+              "currency": "GBP",
+              "engName": "Jersey",
+              "flag": "🇯🇪",
+              "korName": "저지 섬",
+            },
+            Object {
+              "code": "GQ",
+              "currency": "XAF",
+              "engName": "Equatorial Guinea",
+              "flag": "🇬🇶",
+              "korName": "적도 기니",
+            },
+            Object {
+              "code": "KP",
+              "currency": "KPW",
+              "engName": "North Korea",
+              "flag": "🇰🇵",
+              "korName": "조선민주주의인민공화국",
+            },
+            Object {
+              "code": "CF",
+              "currency": "XAF",
+              "engName": "Central African Republic",
+              "flag": "🇨🇫",
+              "korName": "중앙아프리카 공화국",
+            },
+            Object {
+              "code": "TW",
+              "currency": "TWD",
+              "engName": "Taiwan",
+              "flag": "🇹🇼",
+              "korName": "중화민국",
+            },
+            Object {
+              "code": "CN",
+              "currency": "CNY",
+              "engName": "China",
+              "flag": "🇨🇳",
+              "korName": "중화인민공화국",
+            },
+            Object {
+              "code": "DJ",
+              "currency": "DJF",
+              "engName": "Djibouti",
+              "flag": "🇩🇯",
+              "korName": "지부티",
+            },
+            Object {
+              "code": "GI",
+              "currency": "GIP",
+              "engName": "Gibraltar",
+              "flag": "🇬🇮",
+              "korName": "지브롤터",
+            },
+            Object {
+              "code": "ZW",
+              "currency": "ZWL",
+              "engName": "Zimbabwe",
+              "flag": "🇿🇼",
+              "korName": "짐바브웨",
+            },
+            Object {
+              "code": "TD",
+              "currency": "XAF",
+              "engName": "Chad",
+              "flag": "🇹🇩",
+              "korName": "차드",
+            },
+            Object {
+              "code": "CZ",
+              "currency": "CZK",
+              "engName": "Czech Republic",
+              "flag": "🇨🇿",
+              "korName": "체코",
+            },
+            Object {
+              "code": "CL",
+              "currency": "CLP",
+              "engName": "Chile",
+              "flag": "🇨🇱",
+              "korName": "칠레",
+            },
+            Object {
+              "code": "CM",
+              "currency": "XAF",
+              "engName": "Cameroon",
+              "flag": "🇨🇲",
+              "korName": "카메룬",
+            },
+            Object {
+              "code": "CV",
+              "currency": "CVE",
+              "engName": "Cape Verde",
+              "flag": "🇨🇻",
+              "korName": "카보베르데",
+            },
+            Object {
+              "code": "KZ",
+              "currency": "KZT",
+              "engName": "Kazakhstan",
+              "flag": "🇰🇿",
+              "korName": "카자흐스탄",
+            },
+            Object {
+              "code": "QA",
+              "currency": "QAR",
+              "engName": "Qatar",
+              "flag": "🇶🇦",
+              "korName": "카타르",
+            },
+            Object {
+              "code": "KH",
+              "currency": "KHR",
+              "engName": "Cambodia",
+              "flag": "🇰🇭",
+              "korName": "캄보디아",
+            },
+            Object {
+              "code": "CA",
+              "currency": "CAD",
+              "engName": "Canada",
+              "flag": "🇨🇦",
+              "korName": "캐나다",
+            },
+            Object {
+              "code": "KE",
+              "currency": "KES",
+              "engName": "Kenya",
+              "flag": "🇰🇪",
+              "korName": "케냐",
+            },
+            Object {
+              "code": "KY",
+              "currency": "KYD",
+              "engName": "Cayman Islands",
+              "flag": "🇰🇾",
+              "korName": "케이맨 제도",
+            },
+            Object {
+              "code": "KM",
+              "currency": "KMF",
+              "engName": "Comoros",
+              "flag": "🇰🇲",
+              "korName": "코모로",
+            },
+            Object {
+              "code": "CR",
+              "currency": "CRC",
+              "engName": "Costa Rica",
+              "flag": "🇨🇷",
+              "korName": "코스타리카",
+            },
+            Object {
+              "code": "CC",
+              "currency": "AUD",
+              "engName": "Cocos (Keeling) Islands",
+              "flag": "🇨🇨",
+              "korName": "코코스 제도",
+            },
+            Object {
+              "code": "CI",
+              "currency": "XOF",
+              "engName": "Cote d'Ivoire",
+              "flag": "🇨🇮",
+              "korName": "코트디부아르",
+            },
+            Object {
+              "code": "CO",
+              "currency": "COP",
+              "engName": "Colombia",
+              "flag": "🇨🇴",
+              "korName": "콜롬비아",
+            },
+            Object {
+              "code": "CG",
+              "currency": "XAF",
+              "engName": "Congo",
+              "flag": "🇨🇬",
+              "korName": "콩고 공화국",
+            },
+            Object {
+              "code": "CD",
+              "currency": "CDF",
+              "engName": "Congo, The Democratic Republic of the Congo",
+              "flag": "🇨🇩",
+              "korName": "콩고 민주 공화국",
+            },
+            Object {
+              "code": "CU",
+              "currency": "CUP",
+              "engName": "Cuba",
+              "flag": "🇨🇺",
+              "korName": "쿠바",
+            },
+            Object {
+              "code": "KW",
+              "currency": "KWD",
+              "engName": "Kuwait",
+              "flag": "🇰🇼",
+              "korName": "쿠웨이트",
+            },
+            Object {
+              "code": "CK",
+              "currency": "NZD",
+              "engName": "Cook Islands",
+              "flag": "🇨🇰",
+              "korName": "쿡 제도",
+            },
+            Object {
+              "code": "HR",
+              "currency": "HRK",
+              "engName": "Croatia",
+              "flag": "🇭🇷",
+              "korName": "크로아티아",
+            },
+            Object {
+              "code": "CX",
+              "currency": "AUD",
+              "engName": "Christmas Island",
+              "flag": "🇨🇽",
+              "korName": "크리스마스 섬",
+            },
+            Object {
+              "code": "KG",
+              "currency": "KGS",
+              "engName": "Kyrgyzstan",
+              "flag": "🇰🇬",
+              "korName": "키르기스스탄",
+            },
+            Object {
+              "code": "KI",
+              "currency": "AUD",
+              "engName": "Kiribati",
+              "flag": "🇰🇮",
+              "korName": "키리바시",
+            },
+            Object {
+              "code": "CY",
+              "currency": "EUR",
+              "engName": "Cyprus",
+              "flag": "🇨🇾",
+              "korName": "키프로스",
+            },
+            Object {
+              "code": "TH",
+              "currency": "THB",
+              "engName": "Thailand",
+              "flag": "🇹🇭",
+              "korName": "타이",
+            },
+            Object {
+              "code": "TJ",
+              "currency": "TJS",
+              "engName": "Tajikistan",
+              "flag": "🇹🇯",
+              "korName": "타지키스탄",
+            },
+            Object {
+              "code": "TZ",
+              "currency": "TZS",
+              "engName": "Tanzania",
+              "flag": "🇹🇿",
+              "korName": "탄자니아",
+            },
+            Object {
+              "code": "TC",
+              "currency": "USD",
+              "engName": "Turks and Caicos Islands",
+              "flag": "🇹🇨",
+              "korName": "터크스 케이커스 제도",
+            },
+            Object {
+              "code": "TR",
+              "currency": "TRY",
+              "engName": "Turkey",
+              "flag": "🇹🇷",
+              "korName": "터키",
+            },
+            Object {
+              "code": "TG",
+              "currency": "XOF",
+              "engName": "Togo",
+              "flag": "🇹🇬",
+              "korName": "토고",
+            },
+            Object {
+              "code": "TK",
+              "currency": "NZD",
+              "engName": "Tokelau",
+              "flag": "🇹🇰",
+              "korName": "토켈라우",
+            },
+            Object {
+              "code": "TO",
+              "currency": "TOP",
+              "engName": "Tonga",
+              "flag": "🇹🇴",
+              "korName": "통가",
+            },
+            Object {
+              "code": "TM",
+              "currency": "TMT",
+              "engName": "Turkmenistan",
+              "flag": "🇹🇲",
+              "korName": "투르크메니스탄",
+            },
+            Object {
+              "code": "TV",
+              "currency": "AUD",
+              "engName": "Tuvalu",
+              "flag": "🇹🇻",
+              "korName": "투발루",
+            },
+            Object {
+              "code": "TN",
+              "currency": "TND",
+              "engName": "Tunisia",
+              "flag": "🇹🇳",
+              "korName": "튀니지",
+            },
+            Object {
+              "code": "TT",
+              "currency": "TTD",
+              "engName": "Trinidad and Tobago",
+              "flag": "🇹🇹",
+              "korName": "트리니다드 토바고",
+            },
+            Object {
+              "code": "PA",
+              "currency": "PAB",
+              "engName": "Panama",
+              "flag": "🇵🇦",
+              "korName": "파나마",
+            },
+            Object {
+              "code": "PY",
+              "currency": "PYG",
+              "engName": "Paraguay",
+              "flag": "🇵🇾",
+              "korName": "파라과이",
+            },
+            Object {
+              "code": "PK",
+              "currency": "PKR",
+              "engName": "Pakistan",
+              "flag": "🇵🇰",
+              "korName": "파키스탄",
+            },
+            Object {
+              "code": "PG",
+              "currency": "PGK",
+              "engName": "Papua New Guinea",
+              "flag": "🇵🇬",
+              "korName": "파푸아 뉴기니",
+            },
+            Object {
+              "code": "PW",
+              "currency": "USD",
+              "engName": "Palau",
+              "flag": "🇵🇼",
+              "korName": "팔라우",
+            },
+            Object {
+              "code": "PS",
+              "currency": "ILS",
+              "engName": "Palestinian Territory",
+              "flag": "🇵🇸",
+              "korName": "팔레스타인",
+            },
+            Object {
+              "code": "FO",
+              "currency": "DKK",
+              "engName": "Faroe Islands",
+              "flag": "🇫🇴",
+              "korName": "페로 제도",
+            },
+            Object {
+              "code": "PE",
+              "currency": "PEN",
+              "engName": "Peru",
+              "flag": "🇵🇪",
+              "korName": "페루",
+            },
+            Object {
+              "code": "PT",
+              "currency": "EUR",
+              "engName": "Portugal",
+              "flag": "🇵🇹",
+              "korName": "포르투갈",
+            },
+            Object {
+              "code": "FK",
+              "currency": "FKP",
+              "engName": "Falkland Islands",
+              "flag": "🇫🇰",
+              "korName": "포클랜드 제도",
+            },
+            Object {
+              "code": "PL",
+              "currency": "PLN",
+              "engName": "Poland",
+              "flag": "🇵🇱",
+              "korName": "폴란드",
+            },
+            Object {
+              "code": "PR",
+              "currency": "USD",
+              "engName": "Puerto Rico",
+              "flag": "🇵🇷",
+              "korName": "푸에르토리코",
+            },
+            Object {
+              "code": "FR",
+              "currency": "EUR",
+              "engName": "France",
+              "flag": "🇫🇷",
+              "korName": "프랑스",
+            },
+            Object {
+              "code": "TF",
+              "currency": "EUR",
+              "engName": "French Southern Territories",
+              "flag": "🇹🇫",
+              "korName": "프랑스령 남부와 남극 지역",
+            },
+            Object {
+              "code": "PF",
+              "currency": "XPF",
+              "engName": "French Polynesia",
+              "flag": "🇵🇫",
+              "korName": "프랑스령 폴리네시아",
+            },
+            Object {
+              "code": "FJ",
+              "currency": "FJD",
+              "engName": "Fiji",
+              "flag": "🇫🇯",
+              "korName": "피지",
+            },
+            Object {
+              "code": "FI",
+              "currency": "EUR",
+              "engName": "Finland",
+              "flag": "🇫🇮",
+              "korName": "핀란드",
+            },
+            Object {
+              "code": "PH",
+              "currency": "PHP",
+              "engName": "Philippines",
+              "flag": "🇵🇭",
+              "korName": "필리핀",
+            },
+            Object {
+              "code": "PN",
+              "currency": "NZD",
+              "engName": "Pitcairn",
+              "flag": "🇵🇳",
+              "korName": "핏케언 제도",
+            },
+            Object {
+              "code": "HM",
+              "currency": "AUD",
+              "engName": "Heard Island and Mcdonald Islands",
+              "flag": "🏳",
+              "korName": "허드 맥도널드 제도",
+            },
+            Object {
+              "code": "HU",
+              "currency": "HUF",
+              "engName": "Hungary",
+              "flag": "🇭🇺",
+              "korName": "헝가리",
+            },
+            Object {
+              "code": "HK",
+              "currency": "HKD",
+              "engName": "Hong Kong",
+              "flag": "🇭🇰",
+              "korName": "홍콩",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={Array []}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderRadius": 20,
+            "height": 1067.2,
+            "marginHorizontal": 75,
+            "marginVertical": 133.39999999999998,
+            "paddingHorizontal": 20,
+            "position": "absolute",
+            "width": 600,
+          }
+        }
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+          >
+            <TextInput
+              autoFocus={true}
+              onChangeText={[Function]}
+              placeholder="🔍"
+              placeholderTextColor="#999"
+              selectionColor="#0067a3"
+              style={
+                Object {
+                  "borderBottomColor": "#999",
+                  "borderBottomWidth": 0.7,
+                  "height": 35,
+                  "marginVertical": 10,
+                }
+              }
+              value=""
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇭
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  가나
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Ghana
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GHS
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇦
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  가봉
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Gabon
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                XAF
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇾
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  가이아나
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Guyana
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GYD
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇲
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  감비아
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Gambia
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GMD
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇬
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  건지 섬
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Guernsey
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GBP
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇵
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  과들루프
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Guadeloupe
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                EUR
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇹
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  과테말라
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Guatemala
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GTQ
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇺
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  괌
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Guam
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                USD
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇩
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  그레나다
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Grenada
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                XCD
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                🇬🇪
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": 490,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  조지아
+                </Text>
+                <Text
+                  style={
+                    Object {
+                      "fontSize": 8,
+                      "fontWeight": "200",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Georgia
+                </Text>
+              </View>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "fontWeight": "200",
+                    "textAlign": "center",
+                    "width": 30,
+                  }
+                }
+              >
+                GEL
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "width": 30,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          />
+        </View>
+      </RCTScrollView>
+    </Modal>
+    <View
+      accessibilityState={
+        Object {
+          "disabled": true,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#999",
+            "fontSize": 14,
+            "fontWeight": "600",
+          }
+        }
+      >
+        GOTO CONFIRM
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;

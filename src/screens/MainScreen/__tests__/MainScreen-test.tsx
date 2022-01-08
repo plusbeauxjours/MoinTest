@@ -4,17 +4,20 @@ import {act, fireEvent, render} from '@testing-library/react-native';
 
 import MainScreen from '../MainScreen';
 
+jest.mock('react-native-gesture-handler', () => jest.fn());
+
 let component;
-let testingLib;
+
+const getComponent = props => <MainScreen {...props} />;
 
 describe('<MainScreen />', () => {
-    beforeEach(() => {
-        component = <MainScreen />;
-    });
+    const props = {};
+    const component = getComponent({route: {pramrs: props}});
 
     it('renders', () => {
-        const rendered = renderer.create(component).toJSON();
-        expect(rendered).toMatchSnapshot();
-        expect(rendered).toBeTruthy();
+        const renderResult = renderer.create(component);
+        const renderedJson = renderResult.toJSON();
+        expect(renderedJson).toMatchSnapshot();
+        expect(renderedJson).toBeTruthy();
     });
 });
