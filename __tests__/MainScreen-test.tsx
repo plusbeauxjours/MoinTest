@@ -1,7 +1,7 @@
 import React from 'react';
 import Renderer from 'react-test-renderer';
-import ConfirmScreen from '../src/screens/ConfirmScreen';
+import MainScreen from '../src/screens/MainScreen';
 
-describe('ConfirmScreen', () => {
+describe('<MainScreen />', () => {
     it('renders', () => {});
 });
