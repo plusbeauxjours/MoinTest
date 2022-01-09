@@ -35,7 +35,7 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
         Object {
           "fontSize": 14,
           "fontWeight": "600",
-          "marginBottom": 5,
+          "marginBottom": 15,
         }
       }
     >
@@ -81,12 +81,11 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
           "borderColor": "#999",
           "borderRadius": 10,
           "borderWidth": 0.5,
-          "bottom": 20,
           "justifyContent": "center",
           "marginBottom": 2,
+          "marginTop": 10,
           "paddingHorizontal": 20,
-          "paddingVertical": 5,
-          "position": "absolute",
+          "paddingVertical": 3,
         }
       }
     >
@@ -144,8 +143,8 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
             Object {
               "alignItems": "center",
               "color": "#999",
-              "fontSize": 12,
-              "fontWeight": "600",
+              "fontSize": 8,
+              "fontWeight": "400",
             }
           }
         />
@@ -154,8 +153,8 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
         style={
           Object {
             "color": "#999",
-            "fontSize": 12,
-            "fontWeight": "600",
+            "fontSize": 8,
+            "fontWeight": "400",
           }
         }
       >
@@ -172,48 +171,110 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
         }
       }
     />
-    <Text
-      style={
-        Object {
-          "color": "#999",
-          "fontSize": 8,
-          "fontWeight": "400",
+    <View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
-      }
-    >
-      수수료 :
-      1,000
-       
-      KRW
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#999",
-          "fontSize": 8,
-          "fontWeight": "400",
+      >
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          송금액: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          "55,000,000
+           
+          KRW
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
-      }
-    >
-      환율 :
-      undefined
-       
-      KRW
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#999",
-          "fontSize": 8,
-          "fontWeight": "400",
+      >
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          환율: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          undefined
+           
+          KRW
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
         }
-      }
-    >
-      송금액 :
-      "55,000,000
-       
-      KRW
-    </Text>
+      >
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          수수료: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": 8,
+              "fontWeight": "400",
+            }
+          }
+        >
+          1,000
+           
+          KRW
+        </Text>
+      </View>
+    </View>
     <View
       style={
         Object {
@@ -234,6 +295,46 @@ exports[`<ConfirmScreen> should renders ok with props 1`] = `
         }
       }
     />
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#0067a3",
+          "borderRadius": 30,
+          "bottom": 120,
+          "hegiht": 50,
+          "justifyContent": "center",
+          "opacity": 1,
+          "padding": 10,
+          "position": "absolute",
+          "width": 100,
+        }
+      }
+      testID="goToConfirm"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 14,
+            "fontWeight": "600",
+          }
+        }
+      >
+        송금 계속하기
+      </Text>
+    </View>
   </View>
 </RCTSafeAreaView>
 `;
