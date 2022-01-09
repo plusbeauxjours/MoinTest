@@ -13,7 +13,7 @@ const getComponent = props => <MainScreen {...props} />;
 describe('<MainScreen />', () => {
     const props = {};
     const component = getComponent({route: {pramrs: props}});
-
+    const screen = render(<MainScreen />);
     it('renders', () => {
         const renderResult = renderer.create(component);
         const renderedJson = renderResult.toJSON();

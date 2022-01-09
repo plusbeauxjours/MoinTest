@@ -1,5 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Text, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView, View, TextInput, FlatList} from 'react-native';
+import {
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    StatusBar,
+    SafeAreaView,
+    View,
+    TextInput,
+    FlatList,
+    Dimensions,
+} from 'react-native';
 
 import {ParamListBase} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -27,6 +37,10 @@ interface IProps {
     navigation?: StackNavigationProp<ParamListBase>;
 }
 
+const Width = Dimensions.get('window').width;
+const FlagWidth = 50;
+const AmountWidth = 200;
+
 const MainScreen: React.FC<IProps> = ({navigation}) => {
     const korAmountInputRef = useRef(null);
     const exchangeAmountInputRef = useRef(null);
@@ -49,9 +63,14 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     const getCurrencyData = async (): Promise<void> => {
         const {data} = await CurrencyApi(selectedCountry.currency);
         setCurrencyData(data[0] || null);
+        if (!data[0]) {
+            exchangeAmountInputRef?.current?.focus();
+            setErrorMsg('환율 정보가 없습니다.');
+            setDisabled(true);
+            setIsErrorVisible(true);
+        }
 
         const priceByUnit = data[0].basePrice / data[0].currencyUnit;
-
         if (korAmountInputRef?.current?.isFocused()) {
             if (+((+krwAmount - +FEES) / priceByUnit).toFixed(0) <= +MINIMUM_KOR_AMOUNT) {
                 setDisabled(true);
@@ -98,6 +117,7 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             setErrorMsg('송금 최대 금액을 넘습니다.');
             setDisabled(true);
             setIsErrorVisible(true);
+            setExchangeAmount(text.replace(/[^0-9]/g, ''));
         } else {
             setExchangeAmount(text.replace(/[^0-9]/g, ''));
         }
@@ -118,6 +138,7 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     };
 
     const selectCountryFn = (currency: ISelectedCountry): void => {
+        exchangeAmountInputRef?.current?.focus();
         setSelectedCountry(currency);
         setIsCountryModalOpen(false);
     };
@@ -135,63 +156,97 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
                 <View style={styles.row}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => setIsCountryModalOpen(true)}
-                        activeOpacity={0.8}
-                        disabled>
-                        <Text>
-                            {KOREA.flag}
-                            <Text style={fonts.MediumLight}>{KOREA.currency}</Text>
-                        </Text>
-                    </TouchableOpacity>
-                    <TextInput
-                        autoFocus
-                        ref={korAmountInputRef}
-                        autoCapitalize="none"
-                        autoComplete="off"
-                        placeholder="0"
-                        placeholderTextColor={colors.grey}
-                        selectionColor={colors.grey}
-                        keyboardType={'numeric'}
-                        style={{...fonts.Large}}
-                        onChangeText={onKrwAmountChange}
-                        defaultValue={krwAmount}
-                        textAlign="left"
-                        value={addThousandsSeparators(krwAmount)}
-                    />
+                    <View
+                        style={{
+                            ...styles.row,
+                            width: AmountWidth + FlagWidth * 2,
+                            justifyContent: 'flex-end',
+                        }}>
+                        <TouchableOpacity
+                            onPress={() => setIsCountryModalOpen(true)}
+                            activeOpacity={0.8}
+                            disabled
+                            style={styles.flagBox}>
+                            <Text style={fonts.XLargeBold}>{KOREA.flag}</Text>
+                        </TouchableOpacity>
+                        <TextInput
+                            autoFocus
+                            testID="korAmountInput"
+                            ref={korAmountInputRef}
+                            autoCapitalize="none"
+                            autoComplete="off"
+                            placeholder="0"
+                            placeholderTextColor={colors.grey}
+                            selectionColor={colors.lightGrey}
+                            keyboardType={'numeric'}
+                            onChangeText={onKrwAmountChange}
+                            defaultValue={krwAmount}
+                            textAlign="left"
+                            value={addThousandsSeparators(krwAmount)}
+                            style={{...fonts.XLargeBold, ...styles.inputText}}
+                        />
+                        <Text style={{...fonts.MediumLight, width: FlagWidth}}>{KOREA.currency}</Text>
+                    </View>
                 </View>
-                {isErrorVisible && korAmountInputRef?.current?.isFocused() && (
-                    <Text style={{...fonts.Small, ...styles.errorText}}>{errorMsg}</Text>
-                )}
+                <Text style={{...fonts.Small, ...styles.errorText}}>
+                    {isErrorVisible && korAmountInputRef?.current?.isFocused() && errorMsg}
+                </Text>
+                <View style={styles.void}>
+                    <View
+                        style={{
+                            ...styles.voidIconBox,
+                            backgroundColor:
+                                !currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT
+                                    ? colors.lightGrey
+                                    : colors.primary,
+                        }}>
+                        <Text
+                            style={{
+                                ...fonts.MediumBold,
+                                ...styles.voidIcon,
+                                fontWeight: '800',
+                            }}>
+                            ↑↓
+                        </Text>
+                    </View>
+                </View>
                 <View style={styles.row}>
-                    <TouchableOpacity
-                        style={styles.row}
-                        onPress={() => setIsCountryModalOpen(true)}
-                        activeOpacity={0.8}>
-                        <Text>
-                            {selectedCountry.flag}
-                            <Text style={fonts.MediumLight}>{selectedCountry.currency}</Text>
-                        </Text>
-                    </TouchableOpacity>
-                    <TextInput
-                        ref={exchangeAmountInputRef}
-                        autoCapitalize="none"
-                        autoComplete="off"
-                        placeholder="0"
-                        placeholderTextColor={colors.grey}
-                        selectionColor={colors.grey}
-                        keyboardType={'numeric'}
-                        style={{...fonts.Large}}
-                        onChangeText={onExchangeAmountChange}
-                        defaultValue={exchangeAmount}
-                        textAlign="left"
-                        value={addThousandsSeparators(exchangeAmount)}
-                    />
+                    <View
+                        style={{
+                            ...styles.row,
+                            width: AmountWidth + FlagWidth * 2,
+                            justifyContent: 'flex-end',
+                        }}>
+                        <TouchableOpacity
+                            onPress={() => setIsCountryModalOpen(true)}
+                            activeOpacity={0.8}
+                            style={styles.flagBox}>
+                            <Text style={fonts.XLargeBold}>{selectedCountry.flag}</Text>
+                            <View style={styles.dropDownIconBox}>
+                                <Text style={styles.dropDownIcon}>▼</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TextInput
+                            testID="exchangeAmountInput"
+                            ref={exchangeAmountInputRef}
+                            autoCapitalize="none"
+                            autoComplete="off"
+                            placeholder="0"
+                            placeholderTextColor={colors.grey}
+                            selectionColor={colors.lightGrey}
+                            keyboardType={'numeric'}
+                            onChangeText={onExchangeAmountChange}
+                            defaultValue={exchangeAmount}
+                            textAlign="left"
+                            value={addThousandsSeparators(exchangeAmount)}
+                            style={{...fonts.XLargeBold, ...styles.inputText}}
+                        />
+                        <Text style={{...fonts.MediumLight, width: FlagWidth}}>{selectedCountry.currency}</Text>
+                    </View>
                 </View>
-                {isErrorVisible && exchangeAmountInputRef?.current?.isFocused() && (
-                    <Text style={{...fonts.Small, ...styles.errorText}}>{errorMsg}</Text>
-                )}
+                <Text style={{...fonts.Small, ...styles.errorText}}>
+                    {isErrorVisible && exchangeAmountInputRef?.current?.isFocused() && errorMsg}
+                </Text>
                 <CountryModal
                     isCountryModalOpen={isCountryModalOpen}
                     closeCountryModalOpen={closeCountryModalOpen}
@@ -199,17 +254,22 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                     selectCountryFn={selectCountryFn}
                 />
                 <TouchableOpacity
+                    testID="goToConfirm"
                     onPress={goToConfirm}
-                    disabled={!currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT}>
+                    disabled={!currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT}
+                    style={{
+                        ...styles.confirmBtn,
+                        backgroundColor:
+                            !currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT
+                                ? colors.lightGrey
+                                : colors.primary,
+                    }}>
                     <Text
                         style={{
                             ...fonts.LargeBold,
-                            color:
-                                !currencyData || disalbed || +krwAmount > +MAXIMUM_KOR_AMOUNT
-                                    ? colors.grey
-                                    : colors.black,
+                            color: colors.white,
                         }}>
-                        GOTO CONFIRM
+                        송금
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -225,18 +285,68 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1,
-        paddingHorizontal: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    void: {
+        justifyContent: 'center',
         alignItems: 'center',
-        width: 100,
+        height: 100,
+        marginBottom: 15,
+    },
+    voidIconBox: {
+        width: 25,
+        height: 20,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    voidIcon: {
+        color: colors.white,
+    },
+    dropDownIconBox: {
+        width: 15,
+        height: 15,
+        borderRadius: 20,
+        backgroundColor: colors.primary,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        bottom: 2,
+        right: -5,
+        borderWidth: 2,
+        borderColor: colors.white,
+    },
+    dropDownIcon: {
+        color: colors.white,
+        fontSize: 10,
+    },
+    row: {
+        width: Width - 140,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'baseline',
+    },
+    flagBox: {
+        alignItems: 'center',
     },
     errorText: {
+        height: 12,
         color: colors.red,
+    },
+    inputText: {
+        width: AmountWidth,
+        textAlign: 'right',
+    },
+    confirmBtn: {
+        borderRadius: 30,
+        width: 100,
+        hegiht: 50,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 120,
     },
 });
 

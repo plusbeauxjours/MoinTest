@@ -81,7 +81,6 @@ exports[`<CountryModal /> renders 1`] = `
         onChangeText={[Function]}
         placeholder="🔍"
         placeholderTextColor="#999"
-        selectionColor="#0067a3"
         style={
           Object {
             "borderBottomColor": "#999",
@@ -1823,7 +1822,6 @@ exports[`<CountryModal /> renders 1`] = `
           onChangeText={[Function]}
           placeholder="🔍"
           placeholderTextColor="#999"
-          selectionColor="#0067a3"
           style={
             Object {
               "borderBottomColor": "#999",

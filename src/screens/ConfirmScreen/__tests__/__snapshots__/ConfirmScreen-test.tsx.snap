@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ConfirmScreen> render 1`] = `
+exports[`<ConfirmScreen> should renders ok with props 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -21,7 +21,7 @@ exports[`<ConfirmScreen> render 1`] = `
     }
   >
     <Image
-      source={0}
+      source={3}
       style={
         Object {
           "height": 40,
@@ -81,10 +81,11 @@ exports[`<ConfirmScreen> render 1`] = `
           "borderColor": "#999",
           "borderRadius": 10,
           "borderWidth": 0.5,
-          "bottom": 200,
+          "bottom": 20,
           "justifyContent": "center",
           "marginBottom": 2,
-          "padding": 10,
+          "paddingHorizontal": 20,
+          "paddingVertical": 5,
           "position": "absolute",
         }
       }
@@ -107,23 +108,24 @@ exports[`<ConfirmScreen> render 1`] = `
             "backgroundColor": "white",
             "borderColor": "rgba(0, 0, 0, 0.6)",
             "borderRadius": 20,
-            "borderWidth": 1,
+            "borderWidth": 0.5,
+            "bottom": -7,
             "height": 20,
             "justifyContent": "center",
             "opacity": 1,
             "paddingTop": 1,
             "position": "absolute",
-            "right": -5,
-            "top": -5,
+            "right": -7,
             "width": 20,
           }
         }
       >
         <Image
-          source={0}
+          source={4}
           style={
             Object {
               "height": 12,
+              "opacity": 0.5,
               "width": 12,
             }
           }
@@ -160,6 +162,16 @@ exports[`<ConfirmScreen> render 1`] = `
         undefi-ne-
       </Text>
     </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#E5E5E5",
+          "height": 1,
+          "marginVertical": 20,
+          "width": 100,
+        }
+      }
+    />
     <Text
       style={
         Object {
@@ -198,10 +210,20 @@ exports[`<ConfirmScreen> render 1`] = `
       }
     >
       송금액 :
-      0
+      "55,000,000
        
       KRW
     </Text>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#E5E5E5",
+          "height": 1,
+          "marginVertical": 20,
+          "width": 100,
+        }
+      }
+    />
     <View
       style={
         Object {

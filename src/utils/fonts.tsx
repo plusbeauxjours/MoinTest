@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 export const fonts = StyleSheet.create({
+    XLargeBold: {fontSize: 30, fontWeight: '600'},
     LargeBold: {fontSize: 14, fontWeight: '600'},
     Large: {fontSize: 14, fontWeight: '400'},
     LargeLight: {fontSize: 14, fontWeight: '200'},

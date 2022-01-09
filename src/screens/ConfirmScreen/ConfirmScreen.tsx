@@ -57,7 +57,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
     const accountNumber = currencyData?.timestamp + '';
     const accountPattern = 6;
 
-    const goToMain = throttle((item: ICurrency): void => navigation.replace(AppRoute.MAIN, {item}), 500);
+    const goToMain = throttle((): void => navigation.replace(AppRoute.MAIN), 500);
     const toastFn = (): void => {
         clearTimeout();
         toast.on('계좌정보를 복사하였습니다.');
@@ -85,7 +85,7 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'dark-content'} />
             <View style={styles.body}>
-                <Image source={(require('../../../src/assets/successImage.png'), 0)} style={styles.image} />
+                <Image source={(require('../../../src/assets/successImage.png'), 3)} style={styles.image} />
                 <Text style={{...fonts.LargeBold, ...styles.largText}}>송금 신청완료</Text>
                 <Text style={{...fonts.Small, ...styles.smallText}}>
                     {year}년&nbsp;{month}월&nbsp;{day}일&nbsp;{hour > 12 ? '오후' : '오전'}&nbsp;
@@ -94,12 +94,12 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                 <Text style={{...fonts.Small, ...styles.smallText}}>아래 가상계좌로 입금을 완료해주세요!</Text>
                 <View style={styles.bottomBox}>
                     <TouchableOpacity style={styles.copyIcon} onPress={copyFn} activeOpacity={0.8}>
-                        <Image source={(require('../../../src/assets/copyIcon.png'), 0)} style={styles.smallImage} />
+                        <Image source={(require('../../../src/assets/copyIcon.png'), 4)} style={styles.smallImage} />
                     </TouchableOpacity>
                     <View style={styles.row}>
-                        <Text style={{...fonts.MediumBold, ...styles.smallText, alignItems: 'center'}}>{bankName}</Text>
+                        <Text style={{...fonts.Small, ...styles.smallText, alignItems: 'center'}}>{bankName}</Text>
                     </View>
-                    <Text style={{...fonts.MediumBold, ...styles.smallText}}>
+                    <Text style={{...fonts.Small, ...styles.smallText}}>
                         {accountNumber.slice(0, accountPattern) +
                             '-' +
                             accountNumber.slice(accountPattern, accountPattern + 2) +
@@ -107,18 +107,28 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                             accountNumber.slice(accountPattern + 2, -1)}
                     </Text>
                 </View>
-                <Text style={{...fonts.Small, ...styles.smallText}}>
-                    수수료 :{addThousandsSeparators(FEES)}
-                    &nbsp;{KOREA.currency}
-                </Text>
-                <Text style={{...fonts.Small, ...styles.smallText}}>
-                    환율 :{addThousandsSeparators(currencyData?.basePrice + '')}
-                    &nbsp;{KOREA.currency}
-                </Text>
-                <Text style={{...fonts.Small, ...styles.smallText}}>
-                    송금액 :{addThousandsSeparators(krwAmount + '')}
-                    &nbsp;{KOREA.currency}
-                </Text>
+                <View style={styles.line} />
+                <View>
+                    <View style={{...styles.row, justifyContent: 'space-between'}}>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>송금액:&nbsp;</Text>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>
+                            {addThousandsSeparators(krwAmount + '')}&nbsp;{KOREA.currency}
+                        </Text>
+                    </View>
+                    <View style={{...styles.row, justifyContent: 'space-between'}}>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>환율:&nbsp;</Text>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>
+                            {addThousandsSeparators(currencyData?.basePrice + '')}&nbsp;{KOREA.currency}
+                        </Text>
+                    </View>
+                    <View style={{...styles.row, justifyContent: 'space-between'}}>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>수수료:&nbsp;</Text>
+                        <Text style={{...fonts.Small, ...styles.smallText}}>
+                            {addThousandsSeparators(FEES)}&nbsp;{KOREA.currency}
+                        </Text>
+                    </View>
+                </View>
+                <View style={styles.line} />
                 <Observer>
                     {() => (
                         <View style={styles.historyBox}>
@@ -138,6 +148,21 @@ const ConfirmScreen: React.FC<IProps> = ({navigation, route: {params = {}}}) => 
                         </View>
                     )}
                 </Observer>
+                <TouchableOpacity
+                    testID="goToConfirm"
+                    onPress={goToMain}
+                    style={{
+                        ...styles.confirmBtn,
+                        backgroundColor: colors.primary,
+                    }}>
+                    <Text
+                        style={{
+                            ...fonts.LargeBold,
+                            color: colors.white,
+                        }}>
+                        송금 계속하기
+                    </Text>
+                </TouchableOpacity>
             </View>
             <Observer>{() => toast.isToastVisible && <Toast />}</Observer>
         </SafeAreaView>
@@ -163,6 +188,13 @@ const styles = StyleSheet.create({
     smallImage: {
         width: 12,
         height: 12,
+        opacity: 0.5,
+    },
+    line: {
+        height: 1,
+        width: 100,
+        backgroundColor: colors.lightGrey,
+        marginVertical: 20,
     },
     row: {
         flexDirection: 'row',
@@ -187,35 +219,45 @@ const styles = StyleSheet.create({
         marginLeft: 2,
     },
     bottomBox: {
-        position: 'absolute',
-        bottom: 200,
         marginBottom: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
+        paddingVertical: 3,
+        paddingHorizontal: 20,
         borderWidth: 0.5,
         borderColor: colors.grey,
         borderRadius: 10,
+        marginTop: 10,
     },
     copyIcon: {
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        right: -5,
-        top: -5,
+        right: -7,
+        bottom: -7,
         width: 20,
         height: 20,
         borderRadius: 20,
         backgroundColor: colors.white,
         borderColor: colors.modalBackground,
-        borderWidth: 1,
+        borderWidth: 0.5,
         paddingTop: 1,
     },
     largText: {
-        marginBottom: 5,
+        marginBottom: 15,
     },
     smallText: {
         color: colors.grey,
+    },
+    confirmBtn: {
+        borderRadius: 30,
+        width: 100,
+        hegiht: 50,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 120,
     },
 });
 

@@ -16,146 +16,266 @@ exports[`<MainScreen /> renders 1`] = `
         "alignItems": "center",
         "flex": 1,
         "justifyContent": "center",
-        "paddingHorizontal": 20,
       }
     }
   >
     <View
       style={
         Object {
-          "alignItems": "center",
+          "alignItems": "baseline",
           "flexDirection": "row",
-          "justifyContent": "space-between",
-          "width": 100,
+          "justifyContent": "center",
+          "width": 610,
         }
       }
     >
       <View
-        accessibilityState={
-          Object {
-            "disabled": true,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "baseline",
             "flexDirection": "row",
-            "justifyContent": "space-between",
-            "opacity": 1,
-            "width": 100,
+            "justifyContent": "flex-end",
+            "width": 300,
           }
         }
       >
-        <Text>
-          🇰🇷
+        <View
+          accessibilityState={
+            Object {
+              "disabled": true,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "opacity": 1,
+            }
+          }
+        >
           <Text
             style={
               Object {
-                "fontSize": 12,
-                "fontWeight": "200",
+                "fontSize": 30,
+                "fontWeight": "600",
               }
             }
           >
-            KRW
+            🇰🇷
           </Text>
+        </View>
+        <TextInput
+          autoCapitalize="none"
+          autoComplete="off"
+          autoFocus={true}
+          defaultValue="55000000"
+          keyboardType="numeric"
+          onChangeText={[Function]}
+          placeholder="0"
+          placeholderTextColor="#999"
+          selectionColor="#E5E5E5"
+          style={
+            Object {
+              "fontSize": 30,
+              "fontWeight": "600",
+              "textAlign": "right",
+              "width": 200,
+            }
+          }
+          testID="korAmountInput"
+          textAlign="left"
+          value="55,000,000"
+        />
+        <Text
+          style={
+            Object {
+              "fontSize": 12,
+              "fontWeight": "200",
+              "width": 50,
+            }
+          }
+        >
+          KRW
         </Text>
       </View>
-      <TextInput
-        autoCapitalize="none"
-        autoComplete="off"
-        autoFocus={true}
-        defaultValue="55000000"
-        keyboardType="numeric"
-        onChangeText={[Function]}
-        placeholder="0"
-        placeholderTextColor="#999"
-        selectionColor="#999"
-        style={
-          Object {
-            "fontSize": 14,
-            "fontWeight": "400",
-          }
-        }
-        textAlign="left"
-        value="55,000,000"
-      />
     </View>
+    <Text
+      style={
+        Object {
+          "color": "tomato",
+          "fontSize": 8,
+          "fontWeight": "400",
+          "height": 12,
+        }
+      }
+    />
     <View
       style={
         Object {
           "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "width": 100,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 15,
         }
       }
     >
       <View
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "opacity": 1,
-            "width": 100,
+            "backgroundColor": "#E5E5E5",
+            "borderRadius": 5,
+            "height": 20,
+            "justifyContent": "center",
+            "width": 25,
           }
         }
       >
-        <Text>
-          🇯🇵
+        <Text
+          style={
+            Object {
+              "color": "white",
+              "fontSize": 12,
+              "fontWeight": "800",
+            }
+          }
+        >
+          ↑↓
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "baseline",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "width": 610,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "baseline",
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
+            "width": 300,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "opacity": 1,
+            }
+          }
+        >
           <Text
             style={
               Object {
-                "fontSize": 12,
-                "fontWeight": "200",
+                "fontSize": 30,
+                "fontWeight": "600",
               }
             }
           >
-            JPY
+            🇯🇵
           </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#0067a3",
+                "borderColor": "white",
+                "borderRadius": 20,
+                "borderWidth": 2,
+                "bottom": 2,
+                "height": 15,
+                "justifyContent": "center",
+                "position": "absolute",
+                "right": -5,
+                "width": 15,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 10,
+                }
+              }
+            >
+              ▼
+            </Text>
+          </View>
+        </View>
+        <TextInput
+          autoCapitalize="none"
+          autoComplete="off"
+          defaultValue="0"
+          keyboardType="numeric"
+          onChangeText={[Function]}
+          placeholder="0"
+          placeholderTextColor="#999"
+          selectionColor="#E5E5E5"
+          style={
+            Object {
+              "fontSize": 30,
+              "fontWeight": "600",
+              "textAlign": "right",
+              "width": 200,
+            }
+          }
+          testID="exchangeAmountInput"
+          textAlign="left"
+          value="0"
+        />
+        <Text
+          style={
+            Object {
+              "fontSize": 12,
+              "fontWeight": "200",
+              "width": 50,
+            }
+          }
+        >
+          JPY
         </Text>
       </View>
-      <TextInput
-        autoCapitalize="none"
-        autoComplete="off"
-        defaultValue="0"
-        keyboardType="numeric"
-        onChangeText={[Function]}
-        placeholder="0"
-        placeholderTextColor="#999"
-        selectionColor="#999"
-        style={
-          Object {
-            "fontSize": 14,
-            "fontWeight": "400",
-          }
-        }
-        textAlign="left"
-        value="0"
-      />
     </View>
+    <Text
+      style={
+        Object {
+          "color": "tomato",
+          "fontSize": 8,
+          "fontWeight": "400",
+          "height": 12,
+        }
+      }
+    />
     <Modal
       animationType="fade"
       hardwareAccelerated={false}
@@ -236,7 +356,6 @@ exports[`<MainScreen /> renders 1`] = `
             onChangeText={[Function]}
             placeholder="🔍"
             placeholderTextColor="#999"
-            selectionColor="#0067a3"
             style={
               Object {
                 "borderBottomColor": "#999",
@@ -1978,7 +2097,6 @@ exports[`<MainScreen /> renders 1`] = `
               onChangeText={[Function]}
               placeholder="🔍"
               placeholderTextColor="#999"
-              selectionColor="#0067a3"
               style={
                 Object {
                   "borderBottomColor": "#999",
@@ -2949,20 +3067,30 @@ exports[`<MainScreen /> renders 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
+          "alignItems": "center",
+          "backgroundColor": "#E5E5E5",
+          "borderRadius": 30,
+          "bottom": 120,
+          "hegiht": 50,
+          "justifyContent": "center",
           "opacity": 1,
+          "padding": 10,
+          "position": "absolute",
+          "width": 100,
         }
       }
+      testID="goToConfirm"
     >
       <Text
         style={
           Object {
-            "color": "#999",
+            "color": "white",
             "fontSize": 14,
             "fontWeight": "600",
           }
         }
       >
-        GOTO CONFIRM
+        송금
       </Text>
     </View>
   </View>

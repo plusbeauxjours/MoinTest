@@ -48,7 +48,7 @@ export const CurrencyApi = throttle(async (currency: string): Promise<AxiosRespo
     };
     const baseUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW';
     const fullUrl = `${baseUrl}${currency}`;
-    const result = axios.get(fullUrl, {headers});
+    const result = await axios.get(fullUrl, {headers});
     if (result) {
         return result;
     } else {
@@ -71,7 +71,7 @@ export const CountryApi = async (): Promise<AxiosResponse<any, any>> => {
     };
     const baseUrl = 'https://countriesnow.space/api/v0.1/countries/currency';
     const fullUrl = `${baseUrl}`;
-    const result = axios.get(fullUrl, {headers});
+    const result = await axios.get(fullUrl, {headers});
     if (result) {
         return result;
     } else {

@@ -2,7 +2,7 @@ import 'react-native';
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-
+import {render, fireEvent} from '@testing-library/react-native';
 import ConfirmScreen from '../ConfirmScreen';
 
 jest.mock('react-native-gesture-handler', () => jest.fn());
@@ -51,8 +51,10 @@ describe('<ConfirmScreen>', () => {
         krwAmount: '"55000000',
     };
 
-    const component = getComponent({route: {pramrs: props}});
-    it('render', () => {
+    const component = getComponent({route: {params: props}});
+
+    it('should renders ok with props', () => {
+        const mockFunction = jest.fn();
         const renderResult = renderer.create(component);
         const renderedJson = renderResult.toJSON();
         expect(renderedJson).toMatchSnapshot();
