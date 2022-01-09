@@ -88,6 +88,11 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
                 setDisabled(true);
                 setIsErrorVisible(true);
                 setErrorMsg(`받는 금액은 최소 1 ${KOREA.currency} 입니다.`);
+            } else if (+(+exchangeAmount * priceByUnit - +FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
+                setErrorMsg('송금 최대 금액을 넘습니다.');
+                setDisabled(true);
+                setIsErrorVisible(true);
+                setKrwAmount(MAXIMUM_KOR_AMOUNT);
             } else {
                 setDisabled(false);
                 setErrorMsg(null);
@@ -98,12 +103,12 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
     };
 
     const onKrwAmountChange = (text): void => {
-        if (+text.replace(/[^0-9]/g, '') > +MAXIMUM_KOR_AMOUNT) {
+        if (+text.replace(/^0+/, '').replace(/[^0-9]/g, '') > +MAXIMUM_KOR_AMOUNT) {
             setErrorMsg('송금 최대 금액을 넘습니다.');
             setDisabled(true);
             setIsErrorVisible(true);
         } else {
-            setKrwAmount(text.replace(/[^0-9]/g, ''));
+            setKrwAmount(text.replace(/^0+/, '').replace(/[^0-9]/g, ''));
         }
     };
 
@@ -113,13 +118,16 @@ const MainScreen: React.FC<IProps> = ({navigation}) => {
             setErrorMsg('환율 정보가 없습니다.');
             setDisabled(true);
             setIsErrorVisible(true);
-        } else if (+(+text.replace(/[^0-9]/g, '') * priceByUnit - +FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT) {
+        } else if (
+            +(+text.replace(/^0+/, '').replace(/[^0-9]/g, '') * priceByUnit - +FEES).toFixed(0) > +MAXIMUM_KOR_AMOUNT
+        ) {
+            console.log(+(+text.replace(/^0+/, '').replace(/[^0-9]/g, '') * priceByUnit - +FEES).toFixed(0));
             setErrorMsg('송금 최대 금액을 넘습니다.');
             setDisabled(true);
             setIsErrorVisible(true);
-            setExchangeAmount(text.replace(/[^0-9]/g, ''));
+            setExchangeAmount(text.replace(/^0+/, '').replace(/[^0-9]/g, ''));
         } else {
-            setExchangeAmount(text.replace(/[^0-9]/g, ''));
+            setExchangeAmount(text.replace(/^0+/, '').replace(/[^0-9]/g, ''));
         }
     };
     const closeCountryModalOpen = (): void => setIsCountryModalOpen(false);
